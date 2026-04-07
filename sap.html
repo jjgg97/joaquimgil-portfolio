@@ -4,19 +4,221 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>SAP — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<meta name="description" content="Brand designer at SAP — internal communications, brand cohesion, event design and AI-assisted video production.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--font-d:'Barlow Condensed',sans-serif;--font-b:'Barlow',sans-serif;--font-m:'IBM Plex Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--black);font-family:var(--font-b);font-weight:300;overflow-x:hidden;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(245,243,238,.96);backdrop-filter:blur(12px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--font-d);font-weight:900;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo span{color:var(--green);}
+.nav-back{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.nav-back:hover{color:var(--black);}
+.nav-back::before{content:'←';}
+.hero{margin-top:61px;width:100%;height:90vh;position:relative;overflow:hidden;background:var(--black);}
+.hero img{width:100%;height:100%;object-fit:cover;opacity:.65;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:64px 48px;}
+.hero-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
+.hero-title{font-family:var(--font-d);font-weight:900;font-size:clamp(64px,11vw,160px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--font-b);font-size:15px;font-weight:300;color:rgba(255,255,255,.5);margin-top:20px;max-width:500px;line-height:1.7;}
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid var(--border);}
+.meta-item{padding:32px 48px;border-right:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+.meta-val{font-family:var(--font-d);font-weight:700;font-size:clamp(18px,2.5vw,28px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:100px 48px;}
+.section-eyebrow{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.section-eyebrow::before{content:'';display:block;width:20px;height:.5px;background:var(--gray);}
+.intro-headline{font-family:var(--font-d);font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-headline .g{color:var(--green);}
+.intro-right{display:flex;flex-direction:column;gap:28px;padding-top:12px;}
+.body-text{font-family:var(--font-b);font-weight:300;font-size:15px;color:var(--mid);line-height:1.82;}
+.body-text strong{font-weight:500;color:var(--black);}
+.case-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin:0 0 2px;}
+.case-block{background:var(--white);padding:48px;}
+.case-block-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.case-block-title{font-family:var(--font-d);font-weight:700;font-size:clamp(20px,2.5vw,30px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:16px;}
+.case-block-text{font-family:var(--font-b);font-weight:300;font-size:14px;color:var(--mid);line-height:1.75;}
+.img-full{width:100%;display:block;margin:2px 0;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-full-cover{width:100%;height:70vh;overflow:hidden;margin:2px 0;}
+.img-full-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:2px 0;}
+.img-two img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:2px 0;}
+.img-three img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+.quote-block{background:var(--black);padding:80px 48px;}
+.quote-text{font-family:var(--font-d);font-weight:700;font-size:clamp(28px,4vw,56px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:800px;}
+.quote-text .g{color:var(--green);}
+.caption{padding:20px 48px;font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+.tags-row{display:flex;flex-wrap:wrap;gap:8px;padding:48px 48px 0;}
+.tag{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:6px 14px;}
+.next-project{display:flex;align-items:center;justify-content:space-between;padding:64px 48px;border-top:.5px solid var(--border);margin-top:80px;text-decoration:none;transition:background .2s;}
+.next-project:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--font-d);font-weight:900;font-size:clamp(36px,6vw,80px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:8px;}
+.next-arrow{font-family:var(--font-d);font-weight:900;font-size:64px;color:var(--green);}
+footer{background:var(--black);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;}
+.fcopy{font-family:var(--font-m);font-size:9px;color:rgba(255,255,255,.18);letter-spacing:.1em;}
+.flinks{display:flex;gap:24px;}
+.flinks a{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.r.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}
+@media(max-width:900px){
+  nav{padding:16px 20px;}
+  .hero-overlay{padding:40px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:24px 20px;}
+  .intro{grid-template-columns:1fr;gap:40px;padding:60px 20px;}
+  .case-blocks{grid-template-columns:1fr;}
+  .case-block{padding:32px 20px;}
+  .img-two{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .quote-block{padding:60px 20px;}
+  .caption{padding:16px 20px;}
+  .tags-row{padding:32px 20px 0;}
+  .next-project{padding:48px 20px;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">SAP</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<span>.</span>G</a>
+  <a href="index.html#work" class="nav-back">All Work</a>
+</nav>
+
+<div class="hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/f1ce172e-bcf6-48aa-95cc-7329cf1aab37/color+scheme_wallpaper+for+survival+book+copy.png" alt="SAP Brand Work">
+  <div class="hero-overlay">
+    <div class="hero-tag">02 — SaaS · Brand Communication · Internal</div>
+    <h1 class="hero-title">SAP</h1>
+    <p class="hero-sub">Brand designer embedded within a multidisciplinary team at one of the world's largest enterprise software companies.</p>
+  </div>
+</div>
+
+<div class="meta-bar r">
+  <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">SAP</div></div>
+  <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Brand & Comms Designer</div></div>
+  <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">SaaS · Enterprise</div></div>
+  <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2023–2024</div></div>
+</div>
+
+<div class="intro">
+  <div class="intro-left r">
+    <div class="section-eyebrow">Overview</div>
+    <h2 class="intro-headline">Brand at<br>Enterprise<br><span class="g">Scale.</span></h2>
+  </div>
+  <div class="intro-right r d1">
+    <p class="body-text">At SAP I had the chance to collaborate within a <strong>multidisciplinary team</strong> with a clear mission: enhance the experience of interns, maintain a well-preserved in-office culture, and ensure strong brand representation with partner universities.</p>
+    <p class="body-text">My work consisted of <strong>internal communications</strong> varying from videos to newsletters and design assets — collaborating on brand efforts and cohesiveness across teams. Proactive engagement with team activities was essential to a successful performance.</p>
+    <p class="body-text">I also had the chance to <strong>collaborate in bold decisions</strong> — like defining the visual identity of the umbrella brand for the Regions of the Sales HUBs across the globe. And I created a ton of video communications, experimenting with <strong>AI tools and Processing</strong> to present video in a new creative fashion.</p>
+  </div>
+</div>
+
+<div class="case-blocks r">
+  <div class="case-block">
+    <div class="case-block-label">Context</div>
+    <div class="case-block-title">Inside the world's largest enterprise software brand</div>
+    <p class="case-block-text">SAP operates at unprecedented scale — thousands of employees, partner universities, global Sales HUBs, and an intern programme that needed its own distinct internal brand culture. Design had to work across all of it.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Approach</div>
+    <div class="case-block-title">Brand cohesion with creative freedom</div>
+    <p class="case-block-text">Some designs had to stick strictly to SAP brand guidelines. Others gave more creative freedom — particularly for internal events and experimental video communications produced using AI tools and Processing.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Outcome</div>
+    <div class="case-block-title">A stronger intern culture and global HUB identity</div>
+    <p class="case-block-text">Delivered Talent Day event design, internal newsletters, video communications, and contributed to the umbrella brand identity for SAP's global Sales HUBs — balancing creativity with enterprise-grade brand discipline.</p>
+  </div>
+</div>
+
+<div class="img-full-cover r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/d7b752af-0f36-4279-8be2-9c334e1e88fe/Screenshot+2025-02-01+at+19.40.40.png" alt="SAP Brand Work" loading="lazy">
+</div>
+<div class="caption">SAP — Brand communication assets overview</div>
+
+<div class="img-full r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/6189dcb6-1831-4921-acfa-12495129b10e/Football_TV_Communication-ezgif.com-optimize.gif" alt="SAP Football TV Communication" loading="lazy">
+</div>
+<div class="caption">AI-assisted video communication — Football TV series</div>
+
+<div class="img-two r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/4e7c0d66-46ef-4e8e-bc58-a1d78618d79f/Screenshot+2025-01-23+at+13.51.38.png" alt="SAP Design" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/34dae246-5dfa-4e7c-ae70-f17ebf7620d3/Screenshot+2025-01-23+at+13.50.32.png" alt="SAP Design" loading="lazy">
+</div>
+<div class="caption">Internal communications — Event and campaign assets</div>
+
+<div class="quote-block r">
+  <p class="quote-text">"Some designs had to stick to brand guidelines. Some gave me more <span class="g">creative freedom.</span> AI tools, Processing, bold decisions."</p>
+</div>
+
+<div class="img-three r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/51005aff-0a16-438c-b049-6651266e619c/Screenshot+2025-02-01+at+20.12.56.png" alt="SAP" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/f1ce172e-bcf6-48aa-95cc-7329cf1aab37/color+scheme_wallpaper+for+survival+book+copy.png" alt="SAP" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/d7b752af-0f36-4279-8be2-9c334e1e88fe/Screenshot+2025-02-01+at+19.40.40.png" alt="SAP" loading="lazy">
+</div>
+<div class="caption">Brand system — Visual assets across internal touchpoints</div>
+
+<div class="case-blocks r" style="margin-top:2px">
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Internal Communications</div>
+    <p class="case-block-text">Video communications, newsletters, and event design assets for internal campaigns. Experimented with AI tools and Processing to produce video in an entirely new creative format.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Talent Day Event</div>
+    <p class="case-block-text">Complete design for Talent Day — an event designed to help interns network, discover teams across the HUB, and step out of their comfort zone in a fun and interactive way.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Global HUB Brand Identity</div>
+    <p class="case-block-text">Contributed to defining the visual identity for the umbrella brand of SAP's Sales HUBs across global regions — a bold, high-impact design decision with reach across multiple markets.</p>
+  </div>
+</div>
+
+<div class="tags-row r">
+  <span class="tag">Internal Comms</span>
+  <span class="tag">Video</span>
+  <span class="tag">AI Tools</span>
+  <span class="tag">Processing</span>
+  <span class="tag">Event Design</span>
+  <span class="tag">Brand Identity</span>
+  <span class="tag">Newsletter</span>
+  <span class="tag">Enterprise</span>
+  <span class="tag">SaaS</span>
+  <span class="tag">#WeAreDigital</span>
+</div>
+
+<a href="fluidra.html" class="next-project r">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">Fluidra Iberia</div>
+  </div>
+  <div class="next-arrow">→</div>
+</a>
+
+<footer>
+  <div class="fcopy">© 2025 Joaquim Gil — Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
 </body>
 </html>
