@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Celonis — Joaquim Gil</title>
+<meta name="description" content="In-house Brand Designer at Celonis, Munich. SaaS brand system, World Tour campaign, social media, infographics.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--font-d:'Barlow Condensed',sans-serif;--font-b:'Barlow',sans-serif;--font-m:'IBM Plex Mono',monospace;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+body{background:var(--white);color:var(--black);font-family:var(--font-b);font-weight:300;overflow-x:hidden;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(245,243,238,.96);backdrop-filter:blur(12px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--font-d);font-weight:900;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo span{color:var(--green);}
+.nav-back{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
+.nav-back:hover{color:var(--black);}
+.nav-back::before{content:'←';}
+
+/* HERO */
+.hero{margin-top:61px;width:100%;height:90vh;position:relative;overflow:hidden;background:var(--black);}
+.hero img{width:100%;height:100%;object-fit:cover;opacity:.75;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:64px 48px;}
+.hero-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
+.hero-title{font-family:var(--font-d);font-weight:900;font-size:clamp(64px,11vw,160px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--font-b);font-size:15px;font-weight:300;color:rgba(255,255,255,.5);margin-top:20px;max-width:500px;line-height:1.7;}
+
+/* META BAR */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid var(--border);}
+.meta-item{padding:32px 48px;border-right:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
+.meta-val{font-family:var(--font-d);font-weight:700;font-size:clamp(18px,2.5vw,28px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+
+/* INTRO */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:100px 48px;}
+.intro-left{}
+.section-eyebrow{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
+.section-eyebrow::before{content:'';display:block;width:20px;height:.5px;background:var(--gray);}
+.intro-headline{font-family:var(--font-d);font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-headline .g{color:var(--green);}
+.intro-right{display:flex;flex-direction:column;gap:32px;padding-top:12px;}
+.body-text{font-family:var(--font-b);font-weight:300;font-size:15px;color:var(--mid);line-height:1.82;}
+.body-text strong{font-weight:500;color:var(--black);}
+
+/* CASE BLOCKS */
+.case-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin:0 0 2px;}
+.case-block{background:var(--white);padding:48px;}
+.case-block-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.case-block-title{font-family:var(--font-d);font-weight:700;font-size:clamp(20px,2.5vw,30px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:16px;}
+.case-block-text{font-family:var(--font-b);font-weight:300;font-size:14px;color:var(--mid);line-height:1.75;}
+
+/* FULL WIDTH IMAGE */
+.img-full{width:100%;display:block;margin:2px 0;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-full-cover{width:100%;height:70vh;overflow:hidden;margin:2px 0;}
+.img-full-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+
+/* TWO COL IMAGES */
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:2px 0;}
+.img-two img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:2px 0;}
+.img-three img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
+
+/* QUOTE */
+.quote-block{background:var(--black);padding:80px 48px;}
+.quote-text{font-family:var(--font-d);font-weight:700;font-size:clamp(28px,4vw,56px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:800px;}
+.quote-text .g{color:var(--green);}
+.quote-author{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:32px;}
+.quote-author strong{color:rgba(255,255,255,.7);font-weight:400;}
+
+/* CAPTION */
+.caption{padding:20px 48px;font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+
+/* TAGS */
+.tags-row{display:flex;flex-wrap:wrap;gap:8px;padding:48px 48px 0;}
+.tag{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:6px 14px;}
+
+/* NEXT PROJECT */
+.next-project{display:flex;align-items:center;justify-content:space-between;padding:64px 48px;border-top:.5px solid var(--border);margin-top:80px;cursor:pointer;text-decoration:none;transition:background .2s;}
+.next-project:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--font-d);font-weight:900;font-size:clamp(36px,6vw,80px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:8px;}
+.next-arrow{font-family:var(--font-d);font-weight:900;font-size:64px;color:var(--green);}
+
+/* FOOTER */
+footer{background:var(--black);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;border-top:.5px solid rgba(255,255,255,.05);}
+.fcopy{font-family:var(--font-m);font-size:9px;color:rgba(255,255,255,.18);letter-spacing:.1em;}
+.flinks{display:flex;gap:24px;}
+.flinks a{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+/* REVEAL */
+.r{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
+.r.on{opacity:1;transform:none;}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.32s}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  nav{padding:16px 20px;}
+  .hero-overlay{padding:40px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:24px 20px;}
+  .intro{grid-template-columns:1fr;gap:40px;padding:60px 20px;}
+  .case-blocks{grid-template-columns:1fr;}
+  .case-block{padding:32px 20px;}
+  .img-two{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .quote-block{padding:60px 20px;}
+  .tags-row{padding:32px 20px 0;}
+  .caption{padding:16px 20px;}
+  .next-project{padding:48px 20px;}
+  footer{flex-direction:column;gap:16px;text-align:center;padding:24px 20px;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="logo">J<span>.</span>G</a>
+  <a href="index.html#work" class="nav-back">All Work</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/d642d513-5eee-4bf3-bec2-f42f953f0a73/Portfolio+view+2023-2.gif" alt="Celonis Brand System">
+  <div class="hero-overlay">
+    <div class="hero-tag">01 — SaaS · Brand System · In-house</div>
+    <h1 class="hero-title">Celonis</h1>
+    <p class="hero-sub">In-house brand designer at one of Europe's fastest-growing SaaS companies — Munich, Germany.</p>
+  </div>
+</div>
+
+<!-- META BAR -->
+<div class="meta-bar r">
+  <div class="meta-item">
+    <div class="meta-label">Client</div>
+    <div class="meta-val">Celonis</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Role</div>
+    <div class="meta-val">In-house Brand Designer</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Sector</div>
+    <div class="meta-val">SaaS · Enterprise Tech</div>
+  </div>
+  <div class="meta-item">
+    <div class="meta-label">Year</div>
+    <div class="meta-val">2022–2023</div>
+  </div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div class="intro-left r">
+    <div class="section-eyebrow">Overview</div>
+    <h2 class="intro-headline">Enterprise<br>Brand at<br><span class="g">Scale.</span></h2>
+  </div>
+  <div class="intro-right r d1">
+    <p class="body-text">My time as a full-time designer at <strong>Celonis in Munich</strong> was a formative experience in brand and professional growth. Immersed in the heart of a game-changing tech company, I had the privilege of not just executing design work, but truly learning how to shape, play with, and discover the nuances of a powerful global brand.</p>
+    <p class="body-text">One of my key responsibilities was collaborating with the marketing teams on the renowned <strong>Celonis World Tour</strong> — a high-profile global event series requiring a high degree of agility and cross-functional communication. I worked with talented professionals from around the world, often juggling projects across five different time zones in a single day.</p>
+    <p class="body-text">This fast-paced, high-stakes environment taught me to thrive on fast turnarounds. Working alongside <strong>seven other brilliant designers</strong>, I learned the value of diligent collaboration to meet every deadline and goal.</p>
+  </div>
+</div>
+
+<!-- CASE STUDY BLOCKS -->
+<div class="case-blocks r">
+  <div class="case-block">
+    <div class="case-block-label">Context</div>
+    <div class="case-block-title">A brand that must inspire and build trust</div>
+    <p class="case-block-text">Celonis operates at the intersection of enterprise technology and operational transformation. Their brand had to simultaneously appeal to C-suite buyers, technical users, and global event audiences — without losing creative edge.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Approach</div>
+    <div class="case-block-title">Walking the line between B2B and inspiration</div>
+    <p class="case-block-text">Working directly with the Chief Brand Officer, the challenge was to walk the line between trust-building B2B credibility and genuine creative inspiration. Every asset needed to feel premium, human, and enterprise-grade simultaneously.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Outcome</div>
+    <div class="case-block-title">Global campaign assets across 5 time zones</div>
+    <p class="case-block-text">Delivered social media series, event posters, infographics for white papers, in-mail banners, and motion assets for the Celonis World Tour across New York, Paris, and multiple global cities — all under live deadline pressure.</p>
+  </div>
+</div>
+
+<!-- IMAGE: World Tour Poster -->
+<div class="img-full-cover r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/23c61fb7-8149-4fcc-8c89-59a2165d61e0/mockup_lineupposter+copy+2.png" alt="Celonis World Tour Poster Mockup" loading="lazy">
+</div>
+<div class="caption">World Tour — Event poster mockup</div>
+
+<!-- TWO IMAGES: NYC + Paris -->
+<div class="img-two r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/dd08eafc-efe1-42a6-92b2-a463ff83fe20/230419_nyc_reasonstoattend.png" alt="Celonis World Tour NYC" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/ea5fcabc-8b21-4007-9b70-14ece149188e/230419_paris_reasonstoattend.png" alt="Celonis World Tour Paris" loading="lazy">
+</div>
+<div class="caption">World Tour — New York & Paris campaign assets</div>
+
+<!-- QUOTE -->
+<div class="quote-block r">
+  <p class="quote-text">"Joaquim balances creativity at a high level with business requirements. He learned to walk the line between <span class="g">inspiring entertainment</span> and solid trust-building B2B tech spirit like a pro."</p>
+  <div class="quote-author"><strong>Christian Flaccus</strong> — Chief Brand Officer, Celonis</div>
+</div>
+
+<!-- IMAGE: LinkedIn/Social post -->
+<div class="img-full r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/6ddc31d3-514f-416a-b990-d61450c35446/1690097249967.jpeg" alt="Celonis Social Media" loading="lazy">
+</div>
+<div class="caption">Social media series — LinkedIn post design</div>
+
+<!-- TWO IMAGES: Brand Values + Screenshot -->
+<div class="img-two r">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/c014457e-7e4f-4040-8e6f-ed95cd49c33a/230523_Quote1_BrandValuespng.png" alt="Celonis Brand Values" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/c7f69ea0-0ecb-4902-a88e-656a5e1f9834/Screenshot+2025-03-25+at+20.38.25.png" alt="Celonis Design System" loading="lazy">
+</div>
+<div class="caption">Brand values communication & design system overview</div>
+
+<!-- BEHANCE IMAGES: Additional project work -->
+<div class="img-three r">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b51584197609913.6633537ae3e0a.png" alt="Celonis Brand Work" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/4aa7c1197609913.6633537ae28a5.png" alt="Celonis Brand Work" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/24888e197609913.6633537ae3a04.jpg" alt="Celonis Brand Work" loading="lazy">
+</div>
+<div class="caption">Brand system — Visual assets across campaign touchpoints</div>
+
+<!-- FULL IMAGE: Portfolio GIF -->
+<div class="img-full-cover r">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/184791197609913.6633537ae303a.jpg" alt="Celonis Full Brand" loading="lazy">
+</div>
+<div class="caption">Celonis brand system — Full deliverables overview</div>
+
+<!-- TWO MORE BEHANCE -->
+<div class="img-two r">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/562fd6197609913.6633537ae4bbb.jpg" alt="Celonis In-house Design" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/hd_webp/adc738197609913.6633537ae41da.jpg" alt="Celonis In-house Design" loading="lazy">
+</div>
+<div class="caption">In-house design work — Social media & banner series</div>
+
+<!-- SECOND QUOTE -->
+<div class="quote-block r" style="background:var(--black);border-top:1px solid rgba(255,255,255,.05)">
+  <p class="quote-text">"Joaquim was a great asset to our team — bringing his design competencies to bear on the <span class="g">Humanizing Business</span> communication strategy. He balanced creative and project requirements with real flexibility."</p>
+  <div class="quote-author"><strong>Tobias Haug</strong> — Humanizing Business, Celonis</div>
+</div>
+
+<!-- DELIVERABLES -->
+<div class="case-blocks r" style="margin-top:2px">
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Social Media Series</div>
+    <p class="case-block-text">LinkedIn post series, Instagram stories and campaign graphics adapted across global markets and event cities including New York, Paris, Munich and Amsterdam.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Event Campaign</div>
+    <p class="case-block-text">World Tour event posters, digital banners, in-mail designs and on-site visual assets. Produced under live deadline pressure across five international time zones simultaneously.</p>
+  </div>
+  <div class="case-block">
+    <div class="case-block-label">Deliverables</div>
+    <div class="case-block-title">Brand System Assets</div>
+    <p class="case-block-text">Infographics for white papers, brand values communication, image treatment guidelines, motion assets and mockup documentation for the global brand team.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags-row r">
+  <span class="tag">Brand System</span>
+  <span class="tag">Social Media</span>
+  <span class="tag">Infographics</span>
+  <span class="tag">Animation</span>
+  <span class="tag">Mockups</span>
+  <span class="tag">Image Treatment</span>
+  <span class="tag">Event Campaign</span>
+  <span class="tag">In-house</span>
+  <span class="tag">SaaS</span>
+  <span class="tag">Enterprise</span>
+</div>
+
+<!-- NEXT PROJECT -->
+<a href="sap.html" class="next-project r">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">SAP</div>
+  </div>
+  <div class="next-arrow">→</div>
+</a>
+
+<footer>
+  <div class="fcopy">© 2025 Joaquim Gil — Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
+<script>
+const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
