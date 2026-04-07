@@ -916,7 +916,8 @@ footer {
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" style="position:relative;">
+  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;display:block;"></canvas>
   <div class="hero-bg-text">BRAND</div>
   <div class="hero-content">
     <div class="hero-index reveal">
@@ -963,6 +964,8 @@ footer {
   </div>
 </div>
 
+
+
 <!-- WORK -->
 <section id="work">
   <div class="work-header reveal">
@@ -980,32 +983,32 @@ footer {
       <div class="proj-overlay"><div class="proj-overlay-tag">SaaS · Brand System</div><div class="proj-overlay-name">Celonis</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Visual brand system for one of Europe's fastest-growing SaaS companies.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-2" onclick="showProject('sap')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-2" onclick="window.location='sap.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/f1ce172e-bcf6-48aa-95cc-7329cf1aab37/color+scheme_wallpaper+for+survival+book+copy.png" alt="SAP" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">SaaS · Brand Communication</div><div class="proj-overlay-name">SAP</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Brand communication for one of the world's largest enterprise software companies.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-3" onclick="showProject('amsterdam')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-3" onclick="window.location='amsterdam.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/01a941129077707.6163ede2498b3.jpg" alt="Amsterdam" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">City · Identity System</div><div class="proj-overlay-name">Amsterdam City Brand</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">City identity balancing civic pride, cultural richness and global visibility.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-4" onclick="showProject('fluidra')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-4" onclick="window.location='fluidra.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/25823337-078d-4c4b-9d6f-f79f676ff147/Portada+Calida.png" alt="Fluidra" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">Manufacturing · Brand Identity</div><div class="proj-overlay-name">Fluidra Iberia</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Industrial precision translated into confident visual identity.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-5" onclick="showProject('frontrow')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-5" onclick="window.location='frontrow.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3743960c-04e2-4db0-911a-930a8eaf753d/Quiz+story+cover-01.jpg" alt="English for Fashion" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">Education · Brand Identity</div><div class="proj-overlay-name">English for Fashion</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Premium editorial brand identity for a fashion-focused language school.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-6" onclick="showProject('lv')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-6" onclick="window.location='lv.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="Louis Vuitton" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">Luxury · Motion & 3D</div><div class="proj-overlay-name">Louis Vuitton<br>— Imagination</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Cinema 4D motion piece exploring the LV brand universe.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
 
-    <div class="proj proj-7" onclick="showProject('rimowa')" style="cursor:crosshair;position:relative;overflow:hidden;">
+    <div class="proj proj-7" onclick="window.location='rimowa.html'" style="cursor:crosshair;position:relative;overflow:hidden;">
       <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/5eaefa197610365.66335509e7be3.png" alt="Rimowa" style="width:100%;height:100%;object-fit:cover;display:block;">
       <div class="proj-overlay"><div class="proj-overlay-tag">Luxury · Brand & AI</div><div class="proj-overlay-name">Rimowa</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Brand exploration combining luxury DNA with AI-assisted visual generation.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
     </div>
