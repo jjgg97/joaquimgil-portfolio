@@ -3,20 +3,255 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Rimowa — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<title>Rimowa AI — Joaquim Gil</title>
+<meta name="description" content="An AI-assisted brand exploration for Rimowa — a black and white luxury store carved into rock, referencing Daniel Arsham, with luggage as sculpture.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--fm:'IBM Plex Mono',monospace;}
+body{background:var(--white);color:var(--black);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(245,243,238,.95);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo em{color:var(--green);font-style:normal;}
+.back{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.back:hover{color:var(--black);}
+.back::before{content:'← ';}
+
+/* HERO — stark white/grey, sculptural */
+.hero{margin-top:56px;height:88vh;position:relative;overflow:hidden;background:#E8E4DF;}
+.hero img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%);}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px;background:linear-gradient(to top,rgba(10,10,10,.7) 0%,rgba(10,10,10,.1) 50%,transparent 100%);}
+.hero-tag{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.hero-title{font-family:var(--fd);font-weight:900;font-size:clamp(56px,10vw,140px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--fb);font-size:14px;font-weight:300;color:rgba(255,255,255,.55);margin-top:16px;max-width:480px;line-height:1.65;}
+
+/* META */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);}
+.meta-item{padding:28px 40px;border-right:.5px solid var(--border);border-bottom:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.meta-val{font-family:var(--fd);font-weight:700;font-size:clamp(16px,2vw,24px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+
+/* INTRO */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 40px;border-bottom:.5px solid var(--border);}
+.eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:18px;height:.5px;background:var(--gray);}
+.intro-h{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5.5vw,72px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-h .g{color:var(--green);}
+.body-text{font-family:var(--fb);font-weight:300;font-size:14px;color:var(--mid);line-height:1.82;margin-bottom:20px;}
+.body-text:last-child{margin-bottom:0;}
+.body-text strong{font-weight:500;color:var(--black);}
+
+/* BLOCKS */
+.blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);}
+.block{background:var(--white);padding:40px;}
+.block-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.block-title{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;}
+.block-text{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* IMAGES */
+.img-full{width:100%;display:block;}
+.img-full img{width:100%;height:auto;display:block;filter:grayscale(100%);}
+.img-full img:hover{filter:grayscale(0%);transition:filter .6s;}
+.img-cover{width:100%;height:70vh;overflow:hidden;}
+.img-cover img{width:100%;height:100%;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .6s;}
+.img-cover img:hover{filter:grayscale(0%);}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-two img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .6s;}
+.img-two img:hover{filter:grayscale(0%);}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.img-three img{width:100%;aspect-ratio:1;object-fit:cover;display:block;filter:grayscale(100%);transition:filter .6s;}
+.img-three img:hover{filter:grayscale(0%);}
+.gap{height:2px;background:var(--border);}
+.caption{padding:14px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+.caption-hint{font-size:8px;color:rgba(10,10,10,.25);margin-left:8px;}
+
+/* QUOTE */
+.quote{background:var(--black);padding:72px 40px;}
+.quote-text{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.5vw,48px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:760px;}
+.quote-text .g{color:var(--green);}
+
+/* REFERENCE BAR */
+.ref-bar{background:#F0EEE8;padding:32px 40px;border-top:.5px solid var(--border);border-bottom:.5px solid var(--border);display:flex;align-items:center;gap:24px;}
+.ref-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);flex-shrink:0;}
+.ref-name{font-family:var(--fd);font-weight:700;font-size:clamp(20px,3vw,36px);letter-spacing:-.01em;text-transform:uppercase;color:var(--black);}
+.ref-desc{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.6;max-width:500px;margin-left:auto;}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:40px;border-top:.5px solid var(--border);}
+.tag{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:5px 12px;}
+
+/* NEXT — last project so back to index */
+.next{display:flex;align-items:center;justify-content:space-between;padding:56px 40px;border-top:.5px solid var(--border);text-decoration:none;transition:background .2s;}
+.next:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,72px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:6px;}
+.next-arr{font-family:var(--fd);font-weight:900;font-size:56px;color:var(--green);}
+
+footer{background:var(--black);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;}
+.fcopy{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.flinks{display:flex;gap:20px;}
+.flinks a{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero-overlay{padding:32px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:20px;}
+  .intro{grid-template-columns:1fr;gap:32px;padding:48px 20px;}
+  .blocks{grid-template-columns:1fr;}
+  .block{padding:28px 20px;}
+  .img-two{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .caption{padding:12px 20px;}
+  .ref-bar{flex-direction:column;align-items:flex-start;gap:12px;padding:24px 20px;}
+  .ref-desc{margin-left:0;}
+  .quote{padding:48px 20px;}
+  .tags{padding:28px 20px;}
+  .next{padding:40px 20px;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">Rimowa</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<em>.</em>G</a>
+  <a href="index.html#work" class="back">All Work</a>
+</nav>
+
+<!-- HERO — grayscale, sculptural -->
+<div class="hero">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eaefa197610365.66335509e7be3.png" alt="Rimowa AI — luxury store in stone">
+  <div class="hero-overlay">
+    <div class="hero-tag">07 &mdash; Luxury &middot; Brand &amp; AI Exploration &middot; 2024</div>
+    <h1 class="hero-title">Rimowa<br>&mdash; AI</h1>
+    <p class="hero-sub">An AI-assisted brand world for Rimowa &mdash; a luxury store carved into rock, referencing Daniel Arsham, where luggage becomes sculpture.</p>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Project</div><div class="meta-val">Rimowa AI</div></div>
+  <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Brand & AI Exploration</div></div>
+  <div class="meta-item"><div class="meta-label">Tool</div><div class="meta-val">AI Generation</div></div>
+  <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2024</div></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="eyebrow">Luggage as Sculpture</div>
+    <h2 class="intro-h">A Luxury<br>Store<br><span class="g">in Stone.</span></h2>
+  </div>
+  <div>
+    <p class="body-text">With the help of AI, I created a <strong>black and white world that reminds us of the artworks of Daniel Arsham</strong> &mdash; a luxury store carved into the wall. White is the predominant colour and nature's space is respected.</p>
+    <p class="body-text">The Rimowa luggage is <strong>positioned inside the cave's spaces</strong> on a polished concrete floor. The customer is supposed to live the experience of discovering the favourite product and live the reality of purchasing a lifetime piece.</p>
+    <p class="body-text">This project investigates how <strong>AI generation can serve as a design instrument</strong> rather than a replacement &mdash; using AI to explore visual territories that would be impossible to reach otherwise. Aluminum, concrete, stone and light as recurring motifs.</p>
+    <p class="body-text">The result is an <strong>editorial brand world</strong> that feels entirely new while remaining unmistakably Rimowa: precise, durable, timeless. Luxury stripped back to its essential materials.</p>
+  </div>
+</div>
+
+<!-- CASE BLOCKS -->
+<div class="blocks">
+  <div class="block">
+    <div class="block-label">Context</div>
+    <div class="block-title">How luxury brands can use AI without losing identity</div>
+    <p class="block-text">The risk with AI-assisted brand work is generic output. The challenge here was to use AI as a precise instrument &mdash; directing it toward a specific aesthetic territory rooted in Rimowa's material codes and a clear art reference.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Approach</div>
+    <div class="block-title">Daniel Arsham meets Rimowa aluminum</div>
+    <p class="block-text">Arsham's signature erosion aesthetic &mdash; objects becoming stone, artefacts preserved in rock &mdash; provided the conceptual anchor. Rimowa's iconic aluminum cases reinterpreted as archaeological finds: precious, permanent, worth keeping forever.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Outcome</div>
+    <div class="block-title">A brand world in stone, light and silence</div>
+    <p class="block-text">A series of AI-generated brand images creating a coherent visual universe for Rimowa &mdash; a luxury retail environment carved from rock, monochromatic, silent and precise. Design as archaeology.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- MAIN IMAGE: full width -->
+<div class="img-cover">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/5eaefa197610365.66335509e7be3.png" alt="Rimowa AI — store carved in stone" loading="lazy">
+</div>
+<div class="caption">Rimowa AI &mdash; Luxury store carved into rock <span class="caption-hint">hover to reveal colour</span></div>
+
+<!-- REFERENCE BAR -->
+<div class="ref-bar">
+  <div class="ref-label">Visual Reference</div>
+  <div class="ref-name">Daniel Arsham</div>
+  <p class="ref-desc">New York-based artist known for his "fictional archaeology" — everyday objects eroded into stone and crystal, preserved as if discovered centuries from now. His work bridges luxury, art and the passage of time.</p>
+</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <p class="quote-text">"The customer is supposed to live the experience of <span class="g">discovering the favourite product</span> &mdash; and live the reality of purchasing a lifetime piece."</p>
+</div>
+
+<!-- TWO IMAGES -->
+<div class="img-two">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/1dc4eb197610365.66335509e6e47.png" alt="Rimowa AI — stone store detail" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/c00a32197610365.66335509e755b.png" alt="Rimowa AI — luggage in cave" loading="lazy">
+</div>
+<div class="caption">Brand visuals &mdash; Rimowa luggage in the stone universe <span class="caption-hint">hover to reveal colour</span></div>
+
+<!-- DELIVERABLES -->
+<div class="blocks" style="margin-top:2px">
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">AI Brand World</div>
+    <p class="block-text">A coherent series of AI-generated brand images creating a complete visual universe for Rimowa &mdash; monochromatic, sculptural, referencing the Arsham aesthetic of objects preserved in stone and time.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Retail Concept</div>
+    <p class="block-text">A luxury retail environment concept: a store carved from rock where luggage is displayed as sculpture. Polished concrete floors, stone niches, white tonal palette &mdash; precision and permanence as the brand message.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">AI as Design Tool</div>
+    <p class="block-text">A demonstration of how AI generation can be used as a design instrument &mdash; not as replacement, but as a way to access visual territories that would otherwise require significant production budgets. Precise direction, specific output.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">AI Generation</span>
+  <span class="tag">Brand Exploration</span>
+  <span class="tag">Luxury</span>
+  <span class="tag">Rimowa</span>
+  <span class="tag">Daniel Arsham</span>
+  <span class="tag">Retail Concept</span>
+  <span class="tag">Monochrome</span>
+  <span class="tag">Art Direction</span>
+  <span class="tag">Concept</span>
+  <span class="tag">2024</span>
+</div>
+
+<!-- NEXT — back to start -->
+<a href="index.html#work" class="next">
+  <div>
+    <div class="next-label">Back to</div>
+    <div class="next-name">All Work</div>
+  </div>
+  <div class="next-arr">&rarr;</div>
+</a>
+
+<footer>
+  <div class="fcopy">&copy; 2025 Joaquim Gil &mdash; Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
 </body>
 </html>
