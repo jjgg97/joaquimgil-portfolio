@@ -3,20 +3,311 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Amsterdam — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<title>Amsterdam City Brand — Joaquim Gil</title>
+<meta name="description" content="Amsterdam City Identity — branding concept rooted in De Stijl, canal geometry and the concept of the city of a thousand rivers. 2017–2022.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--red:#D40000;--yellow:#F5C800;--blue:#003DA5;--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--fm:'IBM Plex Mono',monospace;}
+body{background:var(--white);color:var(--black);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(245,243,238,.95);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo em{color:var(--green);font-style:normal;}
+.back{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.back:hover{color:var(--black);}
+.back::before{content:'← ';}
+
+/* HERO — De Stijl inspired: bold primary color blocks */
+.hero{margin-top:56px;height:88vh;position:relative;overflow:hidden;background:var(--black);display:flex;}
+.hero-img{width:100%;height:100%;object-fit:cover;display:block;opacity:.55;position:absolute;inset:0;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px;background:linear-gradient(to top,rgba(0,0,0,.85) 0%,rgba(0,0,0,.2) 60%,transparent 100%);}
+/* De Stijl colour strip across top */
+.destijl-strip{position:absolute;top:0;left:0;right:0;height:8px;display:flex;z-index:2;}
+.ds-r{flex:3;background:var(--red);}
+.ds-y{flex:2;background:var(--yellow);}
+.ds-b{flex:4;background:var(--blue);}
+.ds-k{flex:1;background:#000;}
+.hero-tag{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.hero-title{font-family:var(--fd);font-weight:900;font-size:clamp(56px,10vw,140px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--fb);font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-top:16px;max-width:480px;line-height:1.65;}
+
+/* META */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);}
+.meta-item{padding:28px 40px;border-right:.5px solid var(--border);border-bottom:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.meta-val{font-family:var(--fd);font-weight:700;font-size:clamp(16px,2vw,24px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+
+/* INTRO */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 40px;border-bottom:.5px solid var(--border);}
+.eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:18px;height:.5px;background:var(--gray);}
+.intro-h{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5.5vw,72px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-h .g{color:var(--green);}
+.body-text{font-family:var(--fb);font-weight:300;font-size:14px;color:var(--mid);line-height:1.82;margin-bottom:20px;}
+.body-text:last-child{margin-bottom:0;}
+.body-text strong{font-weight:500;color:var(--black);}
+
+/* CONCEPT BLOCKS — De Stijl primary color accents */
+.concept{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--border);margin:2px 0;}
+.concept-item{background:var(--white);padding:48px 40px;border-left:4px solid transparent;}
+.concept-item.red{border-color:var(--red);}
+.concept-item.yellow{border-color:var(--yellow);}
+.concept-item.blue{border-color:var(--blue);}
+.concept-item.black{border-color:var(--black);}
+.concept-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:10px;}
+.concept-title{font-family:var(--fd);font-weight:700;font-size:clamp(20px,2.5vw,30px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;}
+.concept-text{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* BLOCKS */
+.blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);}
+.block{background:var(--white);padding:40px;}
+.block-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.block-title{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;}
+.block-text{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* IMAGES */
+.img-full{width:100%;display:block;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-cover{width:100%;height:70vh;overflow:hidden;}
+.img-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-two img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.img-three img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.img-wide{display:grid;grid-template-columns:2fr 1fr;gap:2px;}
+.img-wide img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
+.gap{height:2px;background:var(--border);}
+.caption{padding:14px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+
+/* QUOTE */
+.quote{background:var(--black);padding:72px 40px;position:relative;overflow:hidden;}
+.quote-accent{position:absolute;top:0;left:0;bottom:0;width:6px;display:flex;flex-direction:column;}
+.qa-r{flex:3;background:var(--red);}
+.qa-y{flex:2;background:var(--yellow);}
+.qa-b{flex:4;background:var(--blue);}
+.quote-text{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.5vw,48px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:760px;}
+.quote-text .g{color:var(--green);}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:40px;border-top:.5px solid var(--border);}
+.tag{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:5px 12px;}
+
+/* NEXT */
+.next{display:flex;align-items:center;justify-content:space-between;padding:56px 40px;border-top:.5px solid var(--border);text-decoration:none;transition:background .2s;}
+.next:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,72px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:6px;}
+.next-arr{font-family:var(--fd);font-weight:900;font-size:56px;color:var(--green);}
+
+footer{background:var(--black);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;}
+.fcopy{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.flinks{display:flex;gap:20px;}
+.flinks a{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero-overlay{padding:32px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:20px;}
+  .intro{grid-template-columns:1fr;gap:32px;padding:48px 20px;}
+  .blocks,.concept{grid-template-columns:1fr;}
+  .block,.concept-item{padding:28px 20px;}
+  .img-two,.img-wide{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .caption{padding:12px 20px;}
+  .quote{padding:48px 20px;}
+  .tags{padding:28px 20px;}
+  .next{padding:40px 20px;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">Amsterdam</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<em>.</em>G</a>
+  <a href="index.html#work" class="back">All Work</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="destijl-strip">
+    <div class="ds-r"></div>
+    <div class="ds-y"></div>
+    <div class="ds-b"></div>
+    <div class="ds-k"></div>
+  </div>
+  <img class="hero-img" src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/01a941129077707.6163ede2498b3.jpg" alt="Amsterdam City Brand">
+  <div class="hero-overlay">
+    <div class="hero-tag">05 &mdash; City Identity &middot; Civic Branding &middot; 2017&ndash;2022</div>
+    <h1 class="hero-title">Amsterdam<br>City Brand</h1>
+    <p class="hero-sub">A city identity concept rooted in De Stijl, canal geometry and the concept of "the city of a thousand rivers."</p>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Project</div><div class="meta-val">Amsterdam City Brand</div></div>
+  <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">City Identity Concept</div></div>
+  <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">Civic &middot; Cultural Branding</div></div>
+  <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2017&ndash;2022</div></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="eyebrow">The City of a Thousand Rivers</div>
+    <h2 class="intro-h">A Brand<br>Built on<br><span class="g">Grid &amp; Water.</span></h2>
+  </div>
+  <div>
+    <p class="body-text">The entire layout is built upon a <strong>strong, asymmetrical grid system reminiscent of De Stijl art</strong>. These lines define the primary structure and flow &mdash; not as static boxes, but as channels that direct the eye across the page, much like a river system carving paths through a landscape.</p>
+    <p class="body-text">The brand concept centres on <strong>"The city of a thousand rivers"</strong> &mdash; Amsterdam's iconic canal network reinterpreted as a modern visual system. The canals become the grid. The grid becomes the brand. Structure and water as one.</p>
+    <p class="body-text"><strong>Content blocks as land and water:</strong> the rectangular spaces created by the grid transform into solid blocks of colour or defined zones for text, imagery and interactive elements. Vibrant primary colours &mdash; red, yellow, blue &mdash; alongside black and white create visual weight and establish a bold, confident aesthetic.</p>
+    <p class="body-text">Information areas use quiet, neutral spaces where typography and data are presented with <strong>clarity and focus</strong> &mdash; the inhabited parts of the city, where life happens within the structure of the canals.</p>
+  </div>
+</div>
+
+<!-- CASE BLOCKS -->
+<div class="blocks">
+  <div class="block">
+    <div class="block-label">Context</div>
+    <div class="block-title">One of the world's most complex cities to brand</div>
+    <p class="block-text">Amsterdam balances historic heritage, progressive values, international tourism and civic identity. A city brand must serve all of these simultaneously &mdash; speaking to locals, visitors, institutions and the global stage without losing coherence.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Approach</div>
+    <div class="block-title">De Stijl grid meets canal geometry</div>
+    <p class="block-text">Rooted in Amsterdam's Dutch artistic heritage, the De Stijl movement provided the structural logic. Primary colours, strict geometric grids and asymmetric balance create a system that feels both historically grounded and urgently contemporary.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Outcome</div>
+    <div class="block-title">A flexible system for civic, cultural and commercial use</div>
+    <p class="block-text">A brand architecture that works at every scale &mdash; from wayfinding and civic signage to social media motion graphics and editorial illustration. One system, infinitely adaptable, like the canal network itself.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- MAIN IMAGE: Full brand overview -->
+<div class="img-cover">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/01a941129077707.6163ede2498b3.jpg" alt="Amsterdam City Brand — full overview" loading="lazy">
+</div>
+<div class="caption">Amsterdam City Brand &mdash; Identity system overview</div>
+
+<!-- CONCEPT BLOCKS: the 4 visual pillars -->
+<div class="concept">
+  <div class="concept-item red">
+    <div class="concept-label">Grid System</div>
+    <div class="concept-title">Structure as Identity</div>
+    <p class="concept-text">The asymmetrical De Stijl grid is not a container — it is the identity. Lines become canals. Canals become channels. The structure directs flow, rhythm and hierarchy across every application of the brand.</p>
+  </div>
+  <div class="concept-item blue">
+    <div class="concept-label">Colour Language</div>
+    <div class="concept-title">Primary Colours as Landmarks</div>
+    <p class="concept-text">Vibrant red, yellow and blue alongside black and white create visual weight, draw attention and establish a bold aesthetic. These are the landmarks of the city — unmistakable, confident, primary.</p>
+  </div>
+  <div class="concept-item yellow">
+    <div class="concept-label">Content Areas</div>
+    <div class="concept-title">Land and Water</div>
+    <p class="concept-text">Solid colour blocks are the land — dominant, structural. Neutral white and grey zones are the water — quiet spaces where information flows with clarity and focus. The city lives in both.</p>
+  </div>
+  <div class="concept-item black">
+    <div class="concept-label">Motion & Animation</div>
+    <div class="concept-title">A Living Brand</div>
+    <p class="concept-text">Motion graphics bring the canal-grid system to life. Lines animate like water. Blocks slide like lock gates. The brand lives and breathes across digital applications, social media and environmental contexts.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- TWO IMAGES: Brand applications -->
+<div class="img-two">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/3bd9f8129077707.6163ede249344.jpg" alt="Amsterdam City Brand application" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/0891ac129077707.6163ede248a30.jpg" alt="Amsterdam City Brand application" loading="lazy">
+</div>
+<div class="caption">Brand applications &mdash; Identity system in context</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <div class="quote-accent">
+    <div class="qa-r"></div>
+    <div class="qa-y"></div>
+    <div class="qa-b"></div>
+  </div>
+  <p class="quote-text">"Think of the grid lines not as static boxes, but as <span class="g">channels that direct the eye</span> across the page &mdash; much like a river system carves paths through a landscape."</p>
+</div>
+
+<!-- THREE: Additional brand visuals from Behance -->
+<div class="img-three">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/51b090129077707.6163ede2a8589.jpg" alt="Amsterdam City Brand" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/8df12e129077707.6163ede2a8cf2.jpg" alt="Amsterdam City Brand" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/disp/d0ab09129077707.6163ede2a927b.jpg" alt="Amsterdam City Brand" loading="lazy">
+</div>
+<div class="caption">Brand system &mdash; Applications across civic and cultural contexts</div>
+
+<!-- WIDE + SMALL: brand document -->
+<div class="img-two">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/b0e5d3129077707.6163ede414c23.jpg" alt="Amsterdam brand document" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/97ee9018-999b-4877-bcda-f5093dd52ab4/Screenshot+2022-02-20+at+22.05.16.png" alt="Amsterdam brand overview" loading="lazy">
+</div>
+<div class="caption">Brand documentation &mdash; Identity guidelines and system overview</div>
+
+<!-- DELIVERABLES -->
+<div class="blocks" style="margin-top:2px">
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">City Identity System</div>
+    <p class="block-text">A complete visual identity rooted in De Stijl principles and Amsterdam's canal geometry &mdash; including grid logic, colour system, typography and a flexible layout framework applicable across all civic and commercial contexts.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Motion Graphics</div>
+    <p class="block-text">Animated brand applications bringing the canal-grid system to life &mdash; lines that flow like water, blocks that open like lock gates. Digital-first motion design for social media, events and environmental contexts.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Art Direction & Illustration</div>
+    <p class="block-text">Editorial illustration, mockup applications and art direction across the full brand system &mdash; demonstrating how the identity works across print, digital, signage and cultural touchpoints within the city.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">City Identity</span>
+  <span class="tag">Branding</span>
+  <span class="tag">De Stijl</span>
+  <span class="tag">Social Media</span>
+  <span class="tag">Motion Graphics</span>
+  <span class="tag">Animation</span>
+  <span class="tag">Mockups</span>
+  <span class="tag">Illustration</span>
+  <span class="tag">Art Direction</span>
+  <span class="tag">Image Treatment</span>
+  <span class="tag">2017&ndash;2022</span>
+</div>
+
+<!-- NEXT -->
+<a href="lv.html" class="next">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">Louis Vuitton</div>
+  </div>
+  <div class="next-arr">&rarr;</div>
+</a>
+
+<footer>
+  <div class="fcopy">&copy; 2025 Joaquim Gil &mdash; Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
 </body>
 </html>
