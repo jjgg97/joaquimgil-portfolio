@@ -3,1497 +3,612 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Joaquim Gil — Brand Designer</title>
+<title>Joaquim Gil — Brand Designer, Barcelona</title>
+<meta name="description" content="Brand designer making complex businesses feel inevitable. Celonis · SAP · Fluidra · Louis Vuitton · Rimowa · Amsterdam.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,300;0,400;0,500;0,700;0,900;1,300;1,400;1,700&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@300;400&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
 :root {
   --black: #0A0A0A;
   --white: #F5F3EE;
   --green: #AAFF00;
   --gray: #888;
-  --border: rgba(10,10,10,0.12);
-  --font-display: 'Barlow Condensed', sans-serif;
-  --font-body: 'Barlow', sans-serif;
-  --font-mono: 'IBM Plex Mono', monospace;
+  --border: rgba(10,10,10,.1);
+  --fd: 'Barlow Condensed', sans-serif;
+  --fb: 'Barlow', sans-serif;
+  --fm: 'IBM Plex Mono', monospace;
 }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
 
 body {
   background: var(--white);
   color: var(--black);
-  font-family: var(--font-body);
-  font-weight: 300;
+  font-family: var(--fb);
   overflow-x: hidden;
   cursor: crosshair;
 }
 
-/* ─── NAV ─────────────────────────────────────────────── */
+/* ── NAV ── */
 nav {
   position: fixed;
   top: 0; left: 0; right: 0;
-  z-index: 100;
+  z-index: 200;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 40px;
-  mix-blend-mode: normal;
+  padding: 0 40px;
+  height: 56px;
+  border-bottom: .5px solid rgba(255,255,255,.08);
 }
+nav.light { border-color: var(--border); background: rgba(245,243,238,.95); backdrop-filter: blur(10px); }
 
-.nav-logo {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 15px;
-  letter-spacing: 0.16em;
+.logo {
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: 17px;
+  letter-spacing: .06em;
   text-transform: uppercase;
-  color: var(--black);
+  color: #fff;
   text-decoration: none;
 }
+nav.light .logo { color: var(--black); }
+.logo em { color: var(--green); font-style: normal; }
 
 .nav-links {
   display: flex;
-  gap: 36px;
+  gap: 32px;
   list-style: none;
 }
-
 .nav-links a {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: .14em;
   text-transform: uppercase;
-  color: var(--gray);
+  color: rgba(255,255,255,.45);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color .2s;
 }
-.nav-links a:hover { color: var(--black); }
+nav.light .nav-links a { color: var(--gray); }
+.nav-links a:hover { color: var(--green); }
+nav.light .nav-links a:hover { color: var(--black); }
 
 .nav-lang {
   display: flex;
-  gap: 8px;
+  gap: 4px;
 }
 .nav-lang button {
-  font-family: var(--font-mono);
+  font-family: var(--fm);
   font-size: 9px;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   background: none;
-  border: 0.5px solid var(--border);
-  color: var(--gray);
-  padding: 4px 8px;
+  border: .5px solid transparent;
+  color: rgba(255,255,255,.3);
+  padding: 4px 7px;
   cursor: crosshair;
-  transition: all 0.2s;
+  transition: all .2s;
 }
-.nav-lang button.active {
-  background: var(--black);
-  color: var(--white);
-  border-color: var(--black);
-}
-.nav-lang button:hover:not(.active) {
-  color: var(--black);
-  border-color: var(--black);
-}
+nav.light .nav-lang button { color: var(--gray); }
+.nav-lang button.on { color: #fff; border-color: rgba(255,255,255,.3); }
+nav.light .nav-lang button.on { color: var(--black); border-color: var(--black); }
 
-/* ─── HERO ─────────────────────────────────────────────── */
+/* ── HERO ── */
 #hero {
-  min-height: 100vh;
+  height: 100vh;
   background: var(--black);
-  display: grid;
-  grid-template-rows: 1fr auto;
-  padding: 0;
   position: relative;
   overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 0 40px 48px;
 }
 
-.hero-bg-text {
+/* Drawing canvas sits inside hero */
+#heroCanvas {
   position: absolute;
-  bottom: -4vw;
-  left: -1vw;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 28vw;
-  line-height: 0.85;
-  color: rgba(255,255,255,0.03);
-  letter-spacing: -0.03em;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
   pointer-events: none;
-  white-space: nowrap;
-  user-select: none;
+  display: block;
 }
 
 .hero-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 40px 60px;
-  padding-top: 140px;
   position: relative;
   z-index: 2;
+  pointer-events: none;
 }
 
-.hero-index {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255,255,255,0.3);
-  letter-spacing: 0.14em;
-  margin-bottom: 32px;
+.hero-eyebrow {
+  font-family: var(--fm);
+  font-size: 9px;
+  color: rgba(255,255,255,.3);
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  margin-bottom: 20px;
 }
 
 .hero-h1 {
-  font-family: var(--font-display);
+  font-family: var(--fd);
   font-weight: 900;
-  font-size: clamp(72px, 13vw, 200px);
-  line-height: 0.88;
-  letter-spacing: -0.02em;
-  color: #fff;
+  font-size: clamp(56px, 10vw, 160px);
+  line-height: .86;
+  letter-spacing: -.025em;
   text-transform: uppercase;
+  color: #fff;
 }
+.hero-h1 .g { color: var(--green); }
+.hero-h1 .push { display: block; padding-left: 12vw; }
 
-.hero-h1 .accent { color: var(--green); }
-
-.hero-h1 .line-indent {
-  display: block;
-  padding-left: 14vw;
-}
-
-.hero-meta {
+.hero-foot {
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 48px;
+  margin-top: 40px;
   padding-top: 24px;
-  border-top: 0.5px solid rgba(255,255,255,0.12);
+  border-top: .5px solid rgba(255,255,255,.08);
+  pointer-events: auto;
 }
 
 .hero-desc {
-  font-family: var(--font-body);
+  font-family: var(--fb);
   font-weight: 300;
-  font-size: 15px;
-  color: rgba(255,255,255,0.45);
-  max-width: 340px;
+  font-size: 13px;
+  color: rgba(255,255,255,.35);
+  max-width: 300px;
   line-height: 1.7;
-  letter-spacing: 0.01em;
 }
 
 .hero-cta {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: 8px;
-}
-
-.hero-cta a {
-  display: inline-flex;
-  align-items: center;
-  gap: 10px;
-  background: var(--green);
-  color: var(--black);
-  text-decoration: none;
-  padding: 14px 24px;
-  font-family: var(--font-display);
+  font-family: var(--fd);
   font-weight: 700;
-  font-size: 13px;
-  letter-spacing: 0.1em;
+  font-size: 12px;
+  letter-spacing: .1em;
   text-transform: uppercase;
-  transition: all 0.25s;
-}
-.hero-cta a:hover {
-  background: #fff;
-}
-
-.hero-scroll-hint {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  text-align: right;
-}
-
-/* ─── CLIENT STRIP ─────────────────────────────────────── */
-.client-strip {
-  background: var(--black);
-  border-top: 0.5px solid rgba(255,255,255,0.08);
-  overflow: hidden;
-  padding: 18px 0;
-}
-
-.client-track {
+  color: var(--green);
+  text-decoration: none;
   display: flex;
-  gap: 0;
-  animation: marquee 18s linear infinite;
+  align-items: center;
+  gap: 8px;
+  transition: gap .2s;
+}
+.hero-cta:hover { gap: 14px; }
+
+/* Draw hint */
+.draw-hint {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+  font-family: var(--fd);
+  font-weight: 900;
+  font-size: clamp(32px, 6vw, 72px);
+  letter-spacing: -.02em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.06);
+  pointer-events: none;
+  transition: opacity .6s;
   white-space: nowrap;
 }
 
-.client-item {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.2);
-  padding: 0 40px;
-  border-right: 0.5px solid rgba(255,255,255,0.06);
-  flex-shrink: 0;
-  transition: color 0.2s;
+/* ── MARQUEE ── */
+.marquee {
+  background: var(--black);
+  border-top: .5px solid rgba(255,255,255,.06);
+  padding: 14px 0;
+  overflow: hidden;
 }
-
-@keyframes marquee {
-  0% { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+.marquee-track {
+  display: flex;
+  white-space: nowrap;
+  animation: mq 24s linear infinite;
 }
-
-/* ─── SECTION HEADER ────────────────────────────────────── */
-.section-label {
-  font-family: var(--font-mono);
+.marquee-item {
+  font-family: var(--fd);
+  font-weight: 400;
   font-size: 10px;
-  letter-spacing: 0.16em;
+  letter-spacing: .2em;
   text-transform: uppercase;
-  color: var(--gray);
-  display: flex;
-  align-items: center;
-  gap: 12px;
+  color: rgba(255,255,255,.15);
+  padding: 0 36px;
+  border-right: .5px solid rgba(255,255,255,.05);
+  flex-shrink: 0;
 }
-.section-label::before {
-  content: '';
-  display: block;
-  width: 24px;
-  height: 0.5px;
-  background: var(--gray);
-}
+@keyframes mq { to { transform: translateX(-50%); } }
 
-/* ─── WORK ──────────────────────────────────────────────── */
+/* ── WORK GRID ── */
 #work {
-  padding: 80px 40px 40px;
+  padding: 48px 40px 0;
 }
 
-.work-header {
+.work-head {
   display: flex;
-  align-items: flex-end;
   justify-content: space-between;
-  margin-bottom: 60px;
+  align-items: baseline;
+  margin-bottom: 32px;
+  border-bottom: .5px solid var(--border);
+  padding-bottom: 16px;
 }
 
 .work-title {
-  font-family: var(--font-display);
+  font-family: var(--fd);
   font-weight: 900;
-  font-size: clamp(64px, 10vw, 140px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
+  font-size: clamp(48px, 7vw, 96px);
+  letter-spacing: -.025em;
   text-transform: uppercase;
-  color: var(--black);
+  line-height: .9;
 }
 
 .work-count {
-  font-family: var(--font-mono);
-  font-size: 11px;
+  font-family: var(--fm);
+  font-size: 9px;
   color: var(--gray);
-  letter-spacing: 0.1em;
-  margin-bottom: 8px;
+  letter-spacing: .12em;
 }
 
-.work-grid {
+/* 12-col asymmetric grid */
+.proj-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  gap: 2px;
+  gap: 3px;
 }
 
-/* Project cards — varied sizing */
 .proj {
-  background: #E8E5DE;
-  overflow: hidden;
   position: relative;
-  cursor: crosshair;
-  group: true;
+  overflow: hidden;
+  display: block;
+  text-decoration: none;
+  background: #111;
 }
-.proj:hover .proj-overlay { opacity: 1; }
-.proj:hover .proj-img { transform: scale(1.04); }
-
-.proj-1 { grid-column: span 7; aspect-ratio: 4/3; }
-.proj-2 { grid-column: span 5; aspect-ratio: 4/3; }
-.proj-3 { grid-column: span 4; aspect-ratio: 3/4; }
-.proj-4 { grid-column: span 4; aspect-ratio: 3/4; }
-.proj-5 { grid-column: span 4; aspect-ratio: 3/4; }
-.proj-6 { grid-column: span 8; aspect-ratio: 16/7; }
-.proj-7 { grid-column: span 4; aspect-ratio: 16/7; }
-
-.proj-img {
+.proj img {
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
   display: block;
+  transition: transform .6s cubic-bezier(.25,.46,.45,.94);
 }
+.proj:hover img { transform: scale(1.04); }
+.proj:hover .proj-info { opacity: 1; }
 
-.proj-placeholder {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(32px, 5vw, 80px);
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  line-height: 0.9;
-  padding: 24px;
-  text-align: center;
-  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
+/* Grid spans */
+.p1 { grid-column: span 7; aspect-ratio: 16/10; }
+.p2 { grid-column: span 5; aspect-ratio: 16/10; }
+.p3 { grid-column: span 4; aspect-ratio: 3/4; }
+.p4 { grid-column: span 4; aspect-ratio: 3/4; }
+.p5 { grid-column: span 4; aspect-ratio: 3/4; }
+.p6 { grid-column: span 5; aspect-ratio: 16/9; }
+.p7 { grid-column: span 7; aspect-ratio: 16/9; }
 
-.proj-overlay {
+/* Placeholder colours for when images fail */
+.c1 { background: #0D0D0D; }
+.c2 { background: #1B2330; }
+.c3 { background: #CEC4B2; }
+.c4 { background: #8BAF87; }
+.c5 { background: #AAFF00; }
+.c6 { background: #0D0D0D; }
+.c7 { background: #B8603E; }
+
+.proj-info {
   position: absolute;
   inset: 0;
-  background: var(--black);
+  background: rgba(5,5,5,.88);
   opacity: 0;
-  transition: opacity 0.35s;
+  transition: opacity .28s;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  padding: 24px;
+  padding: 20px;
 }
-
-.proj-overlay-tag {
-  font-family: var(--font-mono);
+.proj-tag {
+  font-family: var(--fm);
   font-size: 9px;
-  letter-spacing: 0.14em;
+  letter-spacing: .14em;
   text-transform: uppercase;
   color: var(--green);
   margin-bottom: 8px;
 }
-.proj-overlay-name {
-  font-family: var(--font-display);
+.proj-name {
+  font-family: var(--fd);
   font-weight: 700;
-  font-size: clamp(20px, 3vw, 36px);
+  font-size: clamp(18px, 2.8vw, 36px);
   color: #fff;
   text-transform: uppercase;
-  letter-spacing: -0.01em;
-  line-height: 0.95;
+  letter-spacing: -.01em;
+  line-height: .92;
 }
-.proj-overlay-arrow {
-  margin-top: 16px;
-  font-size: 20px;
+.proj-arrow {
+  margin-top: 12px;
+  font-size: 18px;
   color: var(--green);
 }
 
-/* Colors for placeholders */
-.c-black { background: var(--black); color: rgba(255,255,255,0.08); }
-.c-green { background: var(--green); color: rgba(0,0,0,0.08); }
-.c-warm  { background: #D4C9B8; color: rgba(10,10,10,0.08); }
-.c-cool  { background: #B8C4D4; color: rgba(10,10,10,0.08); }
-.c-rust  { background: #C47B5A; color: rgba(255,255,255,0.08); }
-.c-sage  { background: #8FAF8A; color: rgba(255,255,255,0.08); }
-.c-dark  { background: #1E1E1E; color: rgba(255,255,255,0.04); }
-
-/* ─── STATEMENT ─────────────────────────────────────────── */
-#statement {
-  padding: 120px 40px;
-  background: var(--black);
-  position: relative;
-  overflow: hidden;
-}
-
-.statement-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-
-.statement-left {
-  position: relative;
-}
-
-.statement-num {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 22vw;
-  line-height: 0.8;
-  color: rgba(255,255,255,0.04);
-  position: absolute;
-  top: -4vw;
-  left: -2vw;
-  pointer-events: none;
-  user-select: none;
-  letter-spacing: -0.04em;
-}
-
-.statement-text {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(36px, 6vw, 88px);
-  line-height: 0.92;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-
-.statement-text .green { color: var(--green); }
-
-.statement-right {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding-top: 40px;
-}
-
-.testimonial-block {
-  border-left: 2px solid var(--green);
-  padding-left: 24px;
-  margin-bottom: 40px;
-}
-.testimonial-body {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 15px;
-  color: rgba(255,255,255,0.6);
-  line-height: 1.7;
-  font-style: italic;
-  margin-bottom: 16px;
-}
-.testimonial-author {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-}
-.testimonial-author strong {
-  color: rgba(255,255,255,0.7);
-  font-weight: 400;
-}
-
-.stats-row {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1px;
-  background: rgba(255,255,255,0.06);
-  margin-top: 48px;
-}
-.stat {
-  background: var(--black);
-  padding: 24px 20px;
-}
-.stat-num {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 48px;
-  line-height: 1;
-  letter-spacing: -0.03em;
-  color: var(--green);
-}
-.stat-label {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
-  margin-top: 6px;
-}
-
-/* ─── SERVICES ──────────────────────────────────────────── */
-#services {
-  padding: 100px 40px;
-  background: var(--white);
-}
-
-.services-header {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  margin-bottom: 64px;
-  border-bottom: 0.5px solid var(--border);
-  padding-bottom: 32px;
-}
-
-.services-title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(56px, 9vw, 120px);
-  line-height: 0.9;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-}
-
-.services-subtitle {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  color: var(--gray);
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  max-width: 200px;
-  text-align: right;
-  line-height: 1.6;
-}
-
-.services-list {
-  list-style: none;
-}
-.service-item {
-  display: grid;
-  grid-template-columns: 60px 1fr 1fr auto;
-  align-items: center;
-  gap: 32px;
-  padding: 28px 0;
-  border-bottom: 0.5px solid var(--border);
-  transition: background 0.2s;
-  cursor: crosshair;
-}
-.service-item:hover {
-  background: rgba(10,10,10,0.03);
-  margin: 0 -40px;
-  padding-left: 40px;
-  padding-right: 40px;
-}
-.service-item:hover .service-arrow { transform: translateX(6px); }
-
-.service-num {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: var(--gray);
-  letter-spacing: 0.1em;
-}
-.service-name {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(28px, 4vw, 52px);
-  letter-spacing: -0.01em;
-  text-transform: uppercase;
-  line-height: 1;
-}
-.service-desc {
-  font-family: var(--font-body);
-  font-size: 13px;
-  color: var(--gray);
-  line-height: 1.6;
-  max-width: 280px;
-}
-.service-arrow {
-  font-family: var(--font-display);
-  font-size: 24px;
-  color: var(--black);
-  transition: transform 0.2s;
-}
-
-/* ─── ABOUT ─────────────────────────────────────────────── */
-#about {
-  background: var(--black);
-  padding: 100px 40px;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-}
-
-.about-left {}
-
-.about-name-big {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(80px, 14vw, 180px);
-  line-height: 0.82;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.06);
-  margin-bottom: -40px;
-}
-
-.about-photo-placeholder {
-  width: 100%;
-  aspect-ratio: 3/4;
-  background: #1A1A1A;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 0.5px solid rgba(255,255,255,0.06);
-  position: relative;
-}
-.about-photo-placeholder::after {
-  content: 'FOTO';
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  color: rgba(255,255,255,0.15);
-}
-.about-photo-tag {
-  position: absolute;
-  bottom: -1px;
-  left: 0;
-  right: 0;
-  background: var(--green);
-  padding: 10px 20px;
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--black);
-}
-
-.about-right {
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
-}
-
-.about-statement {
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: clamp(28px, 4vw, 56px);
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  text-transform: uppercase;
-  color: #fff;
-}
-.about-statement .green { color: var(--green); }
-
-.about-bio {
-  font-family: var(--font-body);
-  font-weight: 300;
-  font-size: 15px;
-  color: rgba(255,255,255,0.5);
-  line-height: 1.8;
-  border-left: 0.5px solid rgba(255,255,255,0.1);
-  padding-left: 20px;
-}
-
-.about-tools {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-.tool-tag {
-  font-family: var(--font-mono);
-  font-size: 9px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,0.4);
-  border: 0.5px solid rgba(255,255,255,0.1);
-  padding: 6px 12px;
-}
-
-/* ─── CONTACT ───────────────────────────────────────────── */
-#contact {
-  background: var(--white);
-  padding: 100px 40px;
-  position: relative;
-  overflow: hidden;
-}
-
-.contact-bg {
-  position: absolute;
-  bottom: -8vw;
-  right: -4vw;
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: 30vw;
-  line-height: 0.85;
-  color: rgba(10,10,10,0.03);
-  letter-spacing: -0.04em;
-  pointer-events: none;
-  user-select: none;
-}
-
-.contact-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 80px;
-  align-items: center;
-  position: relative;
-  z-index: 1;
-}
-
-.contact-title {
-  font-family: var(--font-display);
-  font-weight: 900;
-  font-size: clamp(60px, 10vw, 140px);
-  line-height: 0.88;
-  letter-spacing: -0.03em;
-  text-transform: uppercase;
-}
-.contact-title .block {
-  display: block;
-}
-.contact-title .indent {
-  padding-left: 20%;
-}
-.contact-title .green { color: var(--green); }
-
-.contact-right {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
-}
-
-.contact-email-link {
-  font-family: var(--font-display);
-  font-weight: 500;
-  font-size: clamp(18px, 2.5vw, 32px);
-  color: var(--black);
-  text-decoration: none;
-  letter-spacing: -0.01em;
-  border-bottom: 1px solid var(--black);
-  padding-bottom: 4px;
-  display: inline-block;
-  transition: color 0.2s;
-}
-.contact-email-link:hover { color: var(--gray); border-color: var(--gray); }
-
-.contact-form {
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-.contact-form input,
-.contact-form textarea {
-  width: 100%;
-  background: transparent;
-  border: none;
-  border-bottom: 0.5px solid var(--border);
-  padding: 12px 0;
-  font-family: var(--font-body);
-  font-size: 14px;
-  font-weight: 300;
-  color: var(--black);
-  outline: none;
-  transition: border-color 0.2s;
-  resize: none;
-}
-.contact-form input::placeholder,
-.contact-form textarea::placeholder {
-  color: rgba(10,10,10,0.3);
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-}
-.contact-form input:focus,
-.contact-form textarea:focus {
-  border-color: var(--black);
-}
-.contact-form textarea { min-height: 100px; }
-
-.btn-send {
-  align-self: flex-start;
-  background: var(--black);
-  color: var(--white);
-  border: none;
-  padding: 16px 32px;
-  font-family: var(--font-display);
-  font-weight: 700;
-  font-size: 14px;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  cursor: crosshair;
-  transition: all 0.25s;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-.btn-send:hover {
-  background: var(--green);
-  color: var(--black);
-}
-
-/* ─── FOOTER ─────────────────────────────────────────────── */
+/* ── FOOTER ── */
 footer {
+  margin-top: 3px;
   background: var(--black);
-  padding: 32px 40px;
+  padding: 24px 40px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border-top: 0.5px solid rgba(255,255,255,0.06);
 }
-
-.footer-copy {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  color: rgba(255,255,255,0.2);
-  letter-spacing: 0.1em;
+.foot-copy {
+  font-family: var(--fm);
+  font-size: 9px;
+  color: rgba(255,255,255,.2);
+  letter-spacing: .1em;
 }
-
-.footer-links {
-  display: flex;
-  gap: 24px;
-}
-.footer-links a {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.12em;
+.foot-links { display: flex; gap: 20px; }
+.foot-links a {
+  font-family: var(--fm);
+  font-size: 9px;
+  letter-spacing: .12em;
   text-transform: uppercase;
-  color: rgba(255,255,255,0.3);
+  color: rgba(255,255,255,.25);
   text-decoration: none;
-  transition: color 0.2s;
+  transition: color .2s;
 }
-.footer-links a:hover { color: var(--green); }
+.foot-links a:hover { color: var(--green); }
 
-/* ─── ANIMATIONS ──────────────────────────────────────────── */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.reveal.visible {
-  opacity: 1;
-  transform: none;
-}
-.reveal-delay-1 { transition-delay: 0.1s; }
-.reveal-delay-2 { transition-delay: 0.2s; }
-.reveal-delay-3 { transition-delay: 0.35s; }
-
-/* ─── CURSOR ────────────────────────────────────────────── */
-.cursor-dot {
-  position: fixed;
-  width: 6px;
-  height: 6px;
-  background: var(--green);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9999;
-  transform: translate(-50%, -50%);
-  transition: transform 0.1s;
-  mix-blend-mode: difference;
-}
-.cursor-ring {
-  position: fixed;
-  width: 32px;
-  height: 32px;
-  border: 1px solid var(--black);
-  border-radius: 50%;
-  pointer-events: none;
-  z-index: 9998;
-  transform: translate(-50%, -50%);
-  transition: width 0.2s, height 0.2s, border-color 0.2s;
-  mix-blend-mode: difference;
-}
-
-/* ─── RESPONSIVE ──────────────────────────────────────────── */
-@media (max-width: 900px) {
-  nav { padding: 16px 20px; }
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  nav { padding: 0 20px; }
   .nav-links { display: none; }
-  .hero-content { padding: 0 20px 48px; padding-top: 120px; }
-  #work { padding: 60px 20px 20px; }
-  .work-grid { grid-template-columns: 1fr 1fr; }
-  .proj-1, .proj-2, .proj-3, .proj-4, .proj-5, .proj-6, .proj-7 {
-    grid-column: span 2;
-    aspect-ratio: 4/3;
-  }
-  .statement-grid { grid-template-columns: 1fr; }
-  #about { grid-template-columns: 1fr; gap: 40px; padding: 60px 20px; }
-  .contact-grid { grid-template-columns: 1fr; gap: 40px; }
-  #contact { padding: 80px 20px; }
-  #services { padding: 80px 20px; }
-  .service-item { grid-template-columns: 40px 1fr; gap: 16px; }
-  .service-desc, .service-arrow { display: none; }
-  footer { padding: 24px 20px; flex-direction: column; gap: 16px; text-align: center; }
-  .work-header { flex-direction: column; align-items: flex-start; gap: 16px; }
+  #hero { padding: 0 20px 40px; }
+  #work { padding: 32px 20px 0; }
+  .proj-grid { grid-template-columns: 1fr 1fr; }
+  .p1,.p2,.p3,.p4,.p5,.p6,.p7 { grid-column: span 2; aspect-ratio: 4/3; }
+  footer { flex-direction: column; gap: 12px; text-align: center; padding: 20px; }
 }
-</style>
-<style>
-.proj, a.proj { cursor: crosshair !important; display: block; }
-a.proj { text-decoration: none; color: inherit; }
-.work-grid .reveal { pointer-events: auto !important; }
-.proj-overlay { pointer-events: none; }
 </style>
 </head>
 <body>
 
-<div class="cursor-dot" id="cursorDot"></div>
-<div class="cursor-ring" id="cursorRing"></div>
-
 <!-- NAV -->
-<nav>
-  <a href="#" class="nav-logo">JG</a>
+<nav id="nav">
+  <a href="#" class="logo">J<em>.</em>G</a>
   <ul class="nav-links">
-    <li><a href="#work" data-i18n="nav.work">Work</a></li>
-    <li><a href="#services" data-i18n="nav.services">Services</a></li>
-    <li><a href="#about" data-i18n="nav.about">About</a></li>
-    <li><a href="#contact" data-i18n="nav.contact">Contact</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="mailto:joaquimxgil@gmail.com">Contact</a></li>
   </ul>
   <div class="nav-lang">
-    <button class="active" onclick="setLang('en')">EN</button>
+    <button class="on" onclick="setLang('en')">EN</button>
     <button onclick="setLang('es')">ES</button>
     <button onclick="setLang('ca')">CA</button>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero" style="position:relative;">
-  <canvas id="heroCanvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:2;pointer-events:none;display:block;"></canvas>
-  <div class="hero-bg-text">BRAND</div>
+<section id="hero">
+  <canvas id="heroCanvas"></canvas>
+
+  <div class="draw-hint" id="drawHint">Draw Something.</div>
+
   <div class="hero-content">
-    <div class="hero-index reveal">
-      <span data-i18n="hero.index">— Barcelona / Brand Designer / 01</span>
-    </div>
-    <h1 class="hero-h1 reveal reveal-delay-1">
-      <span data-i18n="hero.line1">BRAND</span><br>
-      <span class="line-indent"><span data-i18n="hero.line2">DESIGN</span><span class="accent"> ↗</span></span><br>
-      <span data-i18n="hero.line3">THAT EARNS</span><br>
-      <span class="line-indent accent" data-i18n="hero.line4">ATTENTION.</span>
+    <div class="hero-eyebrow" id="eyebrow">— Barcelona · Brand Designer · Available</div>
+    <h1 class="hero-h1">
+      <span id="l1">BRAND</span><br>
+      <span class="push"><span id="l2">DESIGN</span><span class="g"> ↗</span></span><br>
+      <span id="l3">THAT EARNS</span><br>
+      <span class="push g" id="l4">ATTENTION.</span>
     </h1>
-    <div class="hero-meta reveal reveal-delay-2">
-      <p class="hero-desc" data-i18n="hero.desc">
-        Brand designer making complex businesses feel inevitable. Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.
-      </p>
-      <div class="hero-cta">
-        <a href="#work" data-i18n="hero.cta">Selected Work →</a>
-        <div class="hero-scroll-hint" data-i18n="hero.scroll">scroll to explore</div>
-      </div>
+    <div class="hero-foot">
+      <p class="hero-desc" id="desc">Brand designer making complex businesses feel inevitable.<br>Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.</p>
+      <a class="hero-cta" href="#work" id="cta">Selected Work →</a>
     </div>
   </div>
 </section>
 
-<!-- CLIENT STRIP -->
-<div class="client-strip">
-  <div class="client-track">
-    <span class="client-item">Celonis</span>
-    <span class="client-item">SAP</span>
-    <span class="client-item">Fluidra</span>
-    <span class="client-item">Louis Vuitton</span>
-    <span class="client-item">Rimowa</span>
-    <span class="client-item">Amsterdam</span>
-    <span class="client-item">English for Fashion</span>
-    <span class="client-item">Front Row</span>
-    <!-- duplicate for seamless loop -->
-    <span class="client-item">Celonis</span>
-    <span class="client-item">SAP</span>
-    <span class="client-item">Fluidra</span>
-    <span class="client-item">Louis Vuitton</span>
-    <span class="client-item">Rimowa</span>
-    <span class="client-item">Amsterdam</span>
-    <span class="client-item">English for Fashion</span>
-    <span class="client-item">Front Row</span>
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="marquee-track">
+    <span class="marquee-item">Celonis</span>
+    <span class="marquee-item">SAP</span>
+    <span class="marquee-item">Fluidra Iberia</span>
+    <span class="marquee-item">Louis Vuitton</span>
+    <span class="marquee-item">Rimowa</span>
+    <span class="marquee-item">Amsterdam City Brand</span>
+    <span class="marquee-item">English for Fashion</span>
+    <span class="marquee-item">Front Row</span>
+    <span class="marquee-item">Celonis</span>
+    <span class="marquee-item">SAP</span>
+    <span class="marquee-item">Fluidra Iberia</span>
+    <span class="marquee-item">Louis Vuitton</span>
+    <span class="marquee-item">Rimowa</span>
+    <span class="marquee-item">Amsterdam City Brand</span>
+    <span class="marquee-item">English for Fashion</span>
+    <span class="marquee-item">Front Row</span>
   </div>
 </div>
 
-
-
 <!-- WORK -->
 <section id="work">
-  <div class="work-header reveal">
-    <h2 class="work-title" data-i18n="work.title">Selected<br>Work</h2>
-    <div>
-      <div class="work-count" data-i18n="work.count">06 — Projects</div>
-      <div class="section-label" data-i18n="work.label">Featured</div>
-    </div>
+  <div class="work-head">
+    <h2 class="work-title" id="wtitle">Selected Work</h2>
+    <span class="work-count" id="wcount">08 Projects</span>
   </div>
 
-  <div class="work-grid reveal reveal-delay-1">
+  <div class="proj-grid">
 
-    <a href="celonis.html" class="proj proj-1" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/23c61fb7-8149-4fcc-8c89-59a2165d61e0/mockup_lineupposter+copy+2.png" alt="Celonis" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">SaaS · Brand System</div><div class="proj-overlay-name">Celonis</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Visual brand system for one of Europe's fastest-growing SaaS companies.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="sap.html" class="proj proj-2" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/f1ce172e-bcf6-48aa-95cc-7329cf1aab37/color+scheme_wallpaper+for+survival+book+copy.png" alt="SAP" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">SaaS · Brand Communication</div><div class="proj-overlay-name">SAP</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Brand communication for one of the world's largest enterprise software companies.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="amsterdam.html" class="proj proj-3" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/01a941129077707.6163ede2498b3.jpg" alt="Amsterdam" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">City · Identity System</div><div class="proj-overlay-name">Amsterdam City Brand</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">City identity balancing civic pride, cultural richness and global visibility.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="fluidra.html" class="proj proj-4" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/25823337-078d-4c4b-9d6f-f79f676ff147/Portada+Calida.png" alt="Fluidra" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">Manufacturing · Brand Identity</div><div class="proj-overlay-name">Fluidra Iberia</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Industrial precision translated into confident visual identity.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="frontrow.html" class="proj proj-5" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3743960c-04e2-4db0-911a-930a8eaf753d/Quiz+story+cover-01.jpg" alt="English for Fashion" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">Education · Brand Identity</div><div class="proj-overlay-name">English for Fashion</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Premium editorial brand identity for a fashion-focused language school.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="lv.html" class="proj proj-6" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="Louis Vuitton" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">Luxury · Motion & 3D</div><div class="proj-overlay-name">Louis Vuitton<br>— Imagination</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Cinema 4D motion piece exploring the LV brand universe.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-    <a href="rimowa.html" class="proj proj-7" style="cursor:crosshair;position:relative;overflow:hidden;">
-      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/5eaefa197610365.66335509e7be3.png" alt="Rimowa" style="width:100%;height:100%;object-fit:cover;display:block;">
-      <div class="proj-overlay"><div class="proj-overlay-tag">Luxury · Brand & AI</div><div class="proj-overlay-name">Rimowa</div><p style="font-family:var(--font-body);font-size:12px;color:rgba(255,255,255,.55);line-height:1.6;margin:8px 0 12px">Brand exploration combining luxury DNA with AI-assisted visual generation.</p><div class="proj-overlay-arrow">View Case Study →</div></div>
-    </div>
-
-  </div></section>
-
-<!-- STATEMENT / TESTIMONIAL -->
-
-<!-- CASE STUDIES -->
-<section id="cases" style="padding:100px 48px;background:#F5F3EE;">
-  <div style="font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:#888;display:flex;align-items:center;gap:10px;margin-bottom:24px;">
-    <span style="display:block;width:20px;height:.5px;background:#888;"></span>Case Studies
-  </div>
-  <h2 style="font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(52px,8vw,110px);line-height:.88;letter-spacing:-.025em;text-transform:uppercase;margin-bottom:64px;">The Work,<br>In Depth.</h2>
-
-  <style>
-    .ci2{display:grid;grid-template-columns:48px 1fr 160px 32px;align-items:start;gap:16px;padding:14px 0;border-top:.5px solid rgba(10,10,10,.1);cursor:crosshair;transition:background .2s;}
-    .ci2:last-child{border-bottom:.5px solid rgba(10,10,10,.1);}
-    .ci2:hover{background:rgba(10,10,10,.025);margin:0 -48px;padding-left:48px;padding-right:48px;}
-    .ci2:hover .ca2{transform:translateX(6px);color:#0A0A0A;}
-    .cnum2{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;letter-spacing:.1em;padding-top:6px;}
-    .ccl2{font-family:'Barlow Condensed',sans-serif;font-weight:900;font-size:clamp(14px,1.6vw,22px);letter-spacing:-.02em;text-transform:uppercase;line-height:.92;margin-bottom:4px;}
-    .crl2{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#AAFF00;background:#0A0A0A;padding:2px 0;display:inline-block;margin-bottom:4px;}
-    .cst2{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:12px;}
-    .cbl2{font-family:'IBM Plex Mono',monospace;font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:#888;margin-bottom:3px;}
-    .cbt2{font-family:'Barlow',sans-serif;font-size:13px;font-weight:300;color:#444;line-height:1.65;}
-    .cm2{display:flex;flex-direction:column;gap:10px;padding-top:6px;}
-    .ctag2{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#888;border:.5px solid rgba(10,10,10,.1);padding:4px 9px;display:inline-block;width:fit-content;}
-    .cyr2{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#888;letter-spacing:.1em;}
-    .ca2{font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:26px;color:#888;transition:transform .2s,color .2s;padding-top:4px;}
-    @media(max-width:960px){
-      .ci2{grid-template-columns:40px 1fr;gap:12px;}.cm2,.ca2{display:none;}.cst2{grid-template-columns:1fr;}
-      .ci2:hover{margin:0;padding:36px 0;}
-      #cases{padding:60px 20px!important;}
-    }
-  </style>
-
-  <div>
-    <div class="ci2">
-      <div class="cnum2">01</div>
-      <div>
-        <div class="ccl2">Celonis</div>
-        <div class="crl2">&nbsp;In-house Brand Designer &middot; SaaS &middot; Munich&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">Celonis, Europe's process-mining leader, needed a designer who could operate inside a fast-moving brand team — producing assets at enterprise scale without losing creative edge.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Worked directly with the Chief Brand Officer to walk the line between B2B trust-building and genuine creative inspiration — producing communications that felt both premium and credible to enterprise buyers.</div></div>
-        </div>
+    <a href="celonis.html" class="proj p1 c1">
+      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/23c61fb7-8149-4fcc-8c89-59a2165d61e0/mockup_lineupposter+copy+2.png" alt="Celonis" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">SaaS · Brand System</div>
+        <div class="proj-name">Celonis</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Brand System</span><span class="ctag2">In-house</span><span class="ctag2">SaaS</span><span class="cyr2">2022–2023</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">02</div>
-      <div>
-        <div class="ccl2">SAP</div>
-        <div class="crl2">&nbsp;Brand Designer &middot; SaaS &middot; Enterprise&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">SAP required brand communication design across a global enterprise — visual consistency and strategic messaging across dozens of product lines and international markets.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Developed visual communication assets that respected SAP's architecture while injecting clarity and visual energy — making complex product stories accessible to decision-makers.</div></div>
-        </div>
+    <a href="sap.html" class="proj p2 c2">
+      <img src="data:image/png;base64,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" alt="SAP" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">SaaS · Brand Communication</div>
+        <div class="proj-name">SAP</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Communication</span><span class="ctag2">Enterprise</span><span class="ctag2">Global</span><span class="cyr2">2023</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">03</div>
-      <div>
-        <div class="ccl2">Fluidra Iberia</div>
-        <div class="crl2">&nbsp;Brand Identity &middot; Manufacturing &middot; Spain&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">Fluidra, a leading global manufacturer in pool and wellness, needed brand identity for their Iberian operations — translating engineering excellence into visual confidence.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Created a visual identity balancing industrial precision with aspirational lifestyle — positioning Fluidra Iberia as a premium partner, not just a manufacturer.</div></div>
-        </div>
+    <a href="amsterdam.html" class="proj p3 c3">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/01a941129077707.6163ede2498b3.jpg" alt="Amsterdam" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">City · Identity</div>
+        <div class="proj-name">Amsterdam City Brand</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Brand Identity</span><span class="ctag2">Manufacturing</span><span class="cyr2">2022</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">04</div>
-      <div>
-        <div class="ccl2">English for Fashion<br>— Front Row</div>
-        <div class="crl2">&nbsp;Full Brand Identity &middot; Education &middot; Fashion&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">Front Row needed a brand identity positioning them as the premium fashion-language school — appealing to professionals and students already embedded in the fashion industry.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Designed a full identity with editorial, fashion-forward aesthetic — drawing from magazine culture and runway sensibility rather than conventional education branding.</div></div>
-        </div>
+    <a href="fluidra.html" class="proj p4 c4">
+      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/25823337-078d-4c4b-9d6f-f79f676ff147/Portada+Calida.png" alt="Fluidra" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">Manufacturing · Branding</div>
+        <div class="proj-name">Fluidra Iberia</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Brand Identity</span><span class="ctag2">Editorial</span><span class="ctag2">Education</span><span class="cyr2">2022</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">05</div>
-      <div>
-        <div class="ccl2">Amsterdam<br>City Brand</div>
-        <div class="crl2">&nbsp;City Identity Concept &middot; Civic Branding&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">A city identity exploration for Amsterdam — balancing historic heritage, progressive values and international visibility into a cohesive visual language.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Developed a visual language rooted in the city's architectural grid and canal geometry — flexible enough for civic, cultural and commercial applications.</div></div>
-        </div>
+    <a href="frontrow.html" class="proj p5 c5">
+      <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3743960c-04e2-4db0-911a-930a8eaf753d/Quiz+story+cover-01.jpg" alt="English for Fashion" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">Education · Branding</div>
+        <div class="proj-name">English for Fashion</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">City Identity</span><span class="ctag2">Concept</span><span class="cyr2">2022</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">06</div>
-      <div>
-        <div class="ccl2">Louis Vuitton<br>— Imagination</div>
-        <div class="crl2">&nbsp;Motion &amp; 3D &middot; Luxury &middot; Personal Project&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">A personal motion project exploring the Louis Vuitton brand universe through Cinema 4D — an exercise in luxury visual language, material storytelling and editorial motion.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Constructed 3D product environments capturing LV's iconic material codes — monogram canvas, brass hardware, rich leather — translated into contemporary motion design.</div></div>
-        </div>
+    <a href="lv.html" class="proj p6 c6">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="Louis Vuitton" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">Luxury · Motion & 3D</div>
+        <div class="proj-name">Louis Vuitton</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Motion</span><span class="ctag2">Cinema 4D</span><span class="ctag2">Luxury</span><span class="cyr2">2023</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">07</div>
-      <div>
-        <div class="ccl2">Rimowa</div>
-        <div class="crl2">&nbsp;Brand &amp; AI Exploration &middot; Luxury&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">An exploration of Rimowa's brand through AI-assisted image generation — investigating how luxury brands can use emergent tools without losing the craft and precision their identity demands.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Used AI generation as a design instrument — not a replacement — to explore new visual territories for the Rimowa world. Aluminum, light, travel and time as recurring motifs.</div></div>
-        </div>
+    <a href="rimowa.html" class="proj p7 c7">
+      <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/5eaefa197610365.66335509e7be3.png" alt="Rimowa" loading="lazy">
+      <div class="proj-info">
+        <div class="proj-tag">Luxury · Brand & AI</div>
+        <div class="proj-name">Rimowa</div>
+        <div class="proj-arrow">→</div>
       </div>
-      <div class="cm2"><span class="ctag2">Brand</span><span class="ctag2">AI</span><span class="ctag2">Luxury</span><span class="cyr2">2024</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
+    </a>
 
-    <div class="ci2">
-      <div class="cnum2">08</div>
-      <div>
-        <div class="ccl2">Amazon<br>— Green Commitment</div>
-        <div class="crl2">&nbsp;Brand Campaign &middot; Sustainability&nbsp;</div>
-        <div class="cst2">
-          <div><div class="cbl2">Context</div><div class="cbt2">A brand communication campaign for Amazon's sustainability commitments — making corporate environmental pledges feel credible, human and visually compelling.</div></div>
-          <div><div class="cbl2">Approach</div><div class="cbt2">Designed a campaign system built on natural textures, earthy tones and clear typographic hierarchy — foregrounding substance over spectacle.</div></div>
-        </div>
-      </div>
-      <div class="cm2"><span class="ctag2">Campaign</span><span class="ctag2">Sustainability</span><span class="cyr2">2022</span></div>
-      <div class="ca2">&rarr;</div>
-    </div>
-  </div>
-</section>
-
-<section id="statement">
-  <div class="statement-grid">
-    <div class="statement-left reveal">
-      <div class="statement-num">2</div>
-      <div class="statement-text">
-        <span data-i18n="statement.line1">NOT JUST</span><br>
-        <span data-i18n="statement.line2">THE WHAT</span><br>
-        <span data-i18n="statement.line3">BUT THE</span><br>
-        <span class="green" data-i18n="statement.line4">HOW.</span>
-      </div>
-      <div class="stats-row reveal reveal-delay-2">
-        <div class="stat">
-          <div class="stat-num">8+</div>
-          <div class="stat-label" data-i18n="stat.years">Years</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">20+</div>
-          <div class="stat-label" data-i18n="stat.projects">Projects</div>
-        </div>
-        <div class="stat">
-          <div class="stat-num">3</div>
-          <div class="stat-label" data-i18n="stat.sectors">Sectors</div>
-        </div>
-      </div>
-    </div>
-    <div class="statement-right reveal reveal-delay-1">
-      <div class="section-label" style="color:rgba(255,255,255,0.25);margin-bottom:32px">
-        <span data-i18n="testimonials.label">Testimonials</span>
-      </div>
-      <div class="testimonial-block">
-        <p class="testimonial-body" data-i18n="testimonial.1.body">
-          "Joaquim balances creativity at a high level with business requirements. He learned to walk the line between inspiring entertainment and solid trust-building B2B spirit like a pro."
-        </p>
-        <div class="testimonial-author">
-          <strong>Christian Flaccus</strong> — <span data-i18n="testimonial.1.role">Chief Brand Officer, Celonis</span>
-        </div>
-      </div>
-      <div class="testimonial-block">
-        <p class="testimonial-body" data-i18n="testimonial.2.body">
-          "Joaquim was a great asset — bringing his design competencies to bear on our communication strategy. He showed real flexibility and communicated well across all levels of the organization."
-        </p>
-        <div class="testimonial-author">
-          <strong>Tobias Haug</strong> — <span data-i18n="testimonial.2.role">Humanizing Business</span>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section id="services">
-  <div class="services-header reveal">
-    <h2 class="services-title" data-i18n="services.title">Services</h2>
-    <p class="services-subtitle" data-i18n="services.subtitle">Strategic design for brands that mean business</p>
-  </div>
-  <ul class="services-list">
-    <li class="service-item reveal">
-      <span class="service-num">01</span>
-      <span class="service-name" data-i18n="srv.1.name">Brand Identity</span>
-      <span class="service-desc" data-i18n="srv.1.desc">Visual systems that give complex businesses a clear, lasting identity.</span>
-      <span class="service-arrow">→</span>
-    </li>
-    <li class="service-item reveal reveal-delay-1">
-      <span class="service-num">02</span>
-      <span class="service-name" data-i18n="srv.2.name">Visual Strategy</span>
-      <span class="service-desc" data-i18n="srv.2.desc">Positioning, messaging frameworks, and brand architecture.</span>
-      <span class="service-arrow">→</span>
-    </li>
-    <li class="service-item reveal reveal-delay-2">
-      <span class="service-num">03</span>
-      <span class="service-name" data-i18n="srv.3.name">Digital Design</span>
-      <span class="service-desc" data-i18n="srv.3.desc">UX/UI design rooted in brand logic, not just interface convention.</span>
-      <span class="service-arrow">→</span>
-    </li>
-    <li class="service-item reveal reveal-delay-3">
-      <span class="service-num">04</span>
-      <span class="service-name" data-i18n="srv.4.name">Motion & 3D</span>
-      <span class="service-desc" data-i18n="srv.4.desc">Brand storytelling through Cinema 4D, animation, and editorial motion.</span>
-      <span class="service-arrow">→</span>
-    </li>
-  </ul>
-</section>
-
-<!-- ABOUT -->
-<section id="about">
-  <div class="about-left reveal">
-    <div class="about-name-big">JG</div>
-    <div class="about-photo-placeholder">
-      <div class="about-photo-tag" data-i18n="about.available">Available — Freelance & Full-time</div>
-    </div>
-  </div>
-  <div class="about-right">
-    <div class="section-label" style="color:rgba(255,255,255,0.2);margin-bottom:0">
-      <span data-i18n="about.label">About</span>
-    </div>
-    <h2 class="about-statement reveal reveal-delay-1">
-      <span data-i18n="about.stmt1">Design is not</span><br>
-      <span data-i18n="about.stmt2">decoration.</span><br>
-      <span class="green" data-i18n="about.stmt3">It's the argument.</span>
-    </h2>
-    <p class="about-bio reveal reveal-delay-2" data-i18n="about.bio">
-      Graphic designer based in Barcelona. Specialised in brand identity for corporations in SaaS, manufacturing, and fashion — working both as an in-house designer and independently. Experience bridging the gap between business strategy and visual craft, shaped by collaborations with brand directors, CMOs, and creative leaders across Europe.
-    </p>
-    <div class="about-tools reveal reveal-delay-3">
-      <span class="tool-tag">Brand Identity</span>
-      <span class="tool-tag">Adobe CC</span>
-      <span class="tool-tag">Figma</span>
-      <span class="tool-tag">Cinema 4D</span>
-      <span class="tool-tag">Framer</span>
-      <span class="tool-tag">Webflow</span>
-      <span class="tool-tag">Motion</span>
-      <span class="tool-tag">Editorial</span>
-      <span class="tool-tag">UX/UI</span>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-<section id="contact">
-  <div class="contact-bg">HI.</div>
-  <div class="contact-grid">
-    <div class="reveal">
-      <div class="section-label" style="margin-bottom:32px"><span data-i18n="contact.label">Get in touch</span></div>
-      <h2 class="contact-title">
-        <span class="block" data-i18n="contact.line1">LET'S</span>
-        <span class="block indent" data-i18n="contact.line2">BUILD</span>
-        <span class="block green" data-i18n="contact.line3">SOMETHING.</span>
-      </h2>
-    </div>
-    <div class="contact-right reveal reveal-delay-1">
-      <a href="/cdn-cgi/l/email-protection#87ede8e6f6f2eeeaffe0eeebc7e0eae6eeeba9e4e8ea" class="contact-email-link"><span class="__cf_email__" data-cfemail="2d47424c5c584440554a44416d4a404c4441034e4240">[email&#160;protected]</span></a>
-      <form class="contact-form" onsubmit="return false;">
-        <input type="text" placeholder="Name" data-i18n-placeholder="form.name">
-        <input type="email" placeholder="Email" data-i18n-placeholder="form.email">
-        <input type="text" placeholder="Project type" data-i18n-placeholder="form.project">
-        <textarea placeholder="Tell me about your project..." data-i18n-placeholder="form.message"></textarea>
-        <button type="submit" class="btn-send">
-          <span data-i18n="form.send">Send message</span> →
-        </button>
-      </form>
-    </div>
   </div>
 </section>
 
 <!-- FOOTER -->
 <footer>
-  <div class="footer-copy">© 2025 Joaquim Gil — Brand Designer, Barcelona</div>
-  <div class="footer-links">
+  <div class="foot-copy">© 2025 Joaquim Gil — Brand Designer, Barcelona</div>
+  <div class="foot-links">
     <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
     <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#a3c9ccc2d2d6cacedbc4cacfe3c4cec2cacf8dc0ccce" class="contact-email-link"><span class="__cf_email__" data-cfemail="0b61646a7a7e6266736c62674b6c666a626725686466">[email&#160;protected]</span></a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">function doForm(e){
-  e.preventDefault();
-  var name    = e.target.querySelector('[data-kp="co.fn"], [placeholder="Name"], [placeholder="Nombre"], [placeholder="Nom"]').value || '';
-  var email   = e.target.querySelector('[type="email"]').value || '';
-  var project = e.target.querySelectorAll('input')[2].value || '';
-  var message = e.target.querySelector('textarea').value || '';
-
-  var subject = encodeURIComponent('New enquiry from ' + name + ' — joaquimgil.com');
-  var body    = encodeURIComponent(
-    'Name: ' + name + '\n' +
-    'Email: ' + email + '\n' +
-    'Project type: ' + project + '\n\n' +
-    'Message:\n' + message
-  );
-  var smsBody = encodeURIComponent(
-    'New portfolio enquiry from ' + name + ' (' + email + '): ' + project
-  );
-
-  // Open email client
-  window.open('mailto:joaquimxgil@gmail.com?subject=' + subject + '&body=' + body);
-
-  // Open SMS app (works on mobile, silently fails on desktop)
-  setTimeout(function(){
-    window.open('sms:+34693004472?body=' + smsBody);
-  }, 800);
-
-  // Show success message
-  e.target.style.display = 'none';
-  var ok = document.getElementById('fok');
-  if(ok){ ok.style.display = 'block'; }
-}
-</script><script>
-/* ─── i18n ────────────────────────────────────────────────── */
-const translations = {
+<script>
+/* ── LANGUAGE ── */
+const T = {
   en: {
-    "nav.work": "Work", "nav.services": "Services", "nav.about": "About", "nav.contact": "Contact",
-    "hero.index": "— Barcelona / Brand Designer / 01",
-    "hero.line1": "BRAND", "hero.line2": "DESIGN", "hero.line3": "THAT EARNS", "hero.line4": "ATTENTION.",
-    "hero.desc": "Brand designer making complex businesses feel inevitable. Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.",
-    "hero.cta": "Selected Work →", "hero.scroll": "scroll to explore",
-    "work.title": "Selected\nWork", "work.count": "06 — Projects", "work.label": "Featured",
-    "proj.celonis.tag": "SaaS · Brand System", "proj.sap.tag": "SaaS · Communication",
-    "proj.ams.tag": "City · Identity", "proj.fluidra.tag": "Manufacturing · Branding",
-    "proj.lv.tag": "Luxury · Motion / 3D", "proj.rimowa.tag": "Luxury · Brand / AI",
-    "proj.frontrow.tag": "Education · Branding",
-    "statement.line1": "NOT JUST", "statement.line2": "THE WHAT", "statement.line3": "BUT THE", "statement.line4": "HOW.",
-    "stat.years": "Years active", "stat.projects": "Projects", "stat.sectors": "Sectors",
-    "testimonials.label": "Testimonials",
-    "testimonial.1.body": '"Joaquim balances creativity at a high level with business requirements. He learned to walk the line between inspiring entertainment and solid trust-building B2B spirit like a pro."',
-    "testimonial.1.role": "Chief Brand Officer, Celonis",
-    "testimonial.2.body": '"Joaquim was a great asset — bringing his design competencies to bear on our communication strategy. Flexibility, quality, and presence across all levels."',
-    "testimonial.2.role": "Humanizing Business",
-    "services.title": "Services", "services.subtitle": "Strategic design for brands that mean business",
-    "srv.1.name": "Brand Identity", "srv.1.desc": "Visual systems that give complex businesses a clear, lasting identity.",
-    "srv.2.name": "Visual Strategy", "srv.2.desc": "Positioning, messaging frameworks, and brand architecture.",
-    "srv.3.name": "Digital Design", "srv.3.desc": "UX/UI design rooted in brand logic, not just interface convention.",
-    "srv.4.name": "Motion & 3D", "srv.4.desc": "Brand storytelling through Cinema 4D, animation, and editorial motion.",
-    "about.label": "About", "about.available": "Available — Freelance & Full-time",
-    "about.stmt1": "Design is not", "about.stmt2": "decoration.", "about.stmt3": "It's the argument.",
-    "about.bio": "Graphic designer based in Barcelona. Specialised in brand identity for corporations in SaaS, manufacturing, and fashion — working both in-house and independently. Shaped by collaborations with brand directors, CMOs, and creative leaders across Europe.",
-    "contact.label": "Get in touch", "contact.line1": "LET'S", "contact.line2": "BUILD", "contact.line3": "SOMETHING.",
-    "form.name": "Name", "form.email": "Email", "form.project": "Project type",
-    "form.message": "Tell me about your project...", "form.send": "Send message"
+    eyebrow: '— Barcelona · Brand Designer · Available',
+    l1:'BRAND', l2:'DESIGN', l3:'THAT EARNS', l4:'ATTENTION.',
+    desc:'Brand designer making complex businesses feel inevitable.<br>Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.',
+    cta:'Selected Work →', wtitle:'Selected Work', wcount:'08 Projects'
   },
   es: {
-    "nav.work": "Trabajo", "nav.services": "Servicios", "nav.about": "Sobre mí", "nav.contact": "Contacto",
-    "hero.index": "— Barcelona / Diseñador de Marca / 01",
-    "hero.line1": "DISEÑO", "hero.line2": "DE MARCA", "hero.line3": "QUE GENERA", "hero.line4": "ATENCIÓN.",
-    "hero.desc": "Diseñador de marca que hace que los negocios complejos se sientan inevitables. Celonis · SAP · Rimowa · Louis Vuitton · Ámsterdam.",
-    "hero.cta": "Ver Trabajo →", "hero.scroll": "desplaza para explorar",
-    "work.title": "Trabajo\nSelecto", "work.count": "06 — Proyectos", "work.label": "Destacado",
-    "proj.celonis.tag": "SaaS · Sistema de Marca", "proj.sap.tag": "SaaS · Comunicación",
-    "proj.ams.tag": "Ciudad · Identidad", "proj.fluidra.tag": "Manufactura · Branding",
-    "proj.lv.tag": "Lujo · Movimiento / 3D", "proj.rimowa.tag": "Lujo · Marca / IA",
-    "proj.frontrow.tag": "Educación · Branding",
-    "statement.line1": "NO SOLO", "statement.line2": "EL QUÉ", "statement.line3": "SINO EL", "statement.line4": "CÓMO.",
-    "stat.years": "Años activo", "stat.projects": "Proyectos", "stat.sectors": "Sectores",
-    "testimonials.label": "Testimonios",
-    "testimonial.1.body": '"Joaquim equilibra la creatividad en un alto nivel con los requisitos empresariales. Aprendió a caminar en esa línea como un profesional."',
-    "testimonial.1.role": "Chief Brand Officer, Celonis",
-    "testimonial.2.body": '"Joaquim fue un gran activo — aportando sus competencias de diseño a nuestra estrategia de comunicación con flexibilidad y presencia en todos los niveles."',
-    "testimonial.2.role": "Humanizing Business",
-    "services.title": "Servicios", "services.subtitle": "Diseño estratégico para marcas que importan",
-    "srv.1.name": "Identidad de Marca", "srv.1.desc": "Sistemas visuales que dan a los negocios una identidad clara y duradera.",
-    "srv.2.name": "Estrategia Visual", "srv.2.desc": "Posicionamiento, marcos de mensajes y arquitectura de marca.",
-    "srv.3.name": "Diseño Digital", "srv.3.desc": "UX/UI con raíces en la lógica de marca, no solo en la convención.",
-    "srv.4.name": "Movimiento & 3D", "srv.4.desc": "Narrativa de marca a través de Cinema 4D, animación y motion editorial.",
-    "about.label": "Sobre mí", "about.available": "Disponible — Freelance y tiempo completo",
-    "about.stmt1": "El diseño no es", "about.stmt2": "decoración.", "about.stmt3": "Es el argumento.",
-    "about.bio": "Diseñador gráfico con base en Barcelona. Especializado en identidad de marca para corporaciones en SaaS, manufactura y moda — trabajando tanto in-house como de forma independiente.",
-    "contact.label": "Escríbeme", "contact.line1": "HAGAMOS", "contact.line2": "ALGO", "contact.line3": "GRANDE.",
-    "form.name": "Nombre", "form.email": "Email", "form.project": "Tipo de proyecto",
-    "form.message": "Cuéntame sobre tu proyecto...", "form.send": "Enviar mensaje"
+    eyebrow: '— Barcelona · Diseñador de Marca · Disponible',
+    l1:'DISEÑO', l2:'DE MARCA', l3:'QUE GENERA', l4:'ATENCIÓN.',
+    desc:'Diseñador de marca que hace los negocios complejos inevitables.<br>Celonis · SAP · Rimowa · Louis Vuitton · Ámsterdam.',
+    cta:'Ver Trabajo →', wtitle:'Trabajo Selecto', wcount:'08 Proyectos'
   },
   ca: {
-    "nav.work": "Treball", "nav.services": "Serveis", "nav.about": "Sobre mi", "nav.contact": "Contacte",
-    "hero.index": "— Barcelona / Dissenyador de Marca / 01",
-    "hero.line1": "DISSENY", "hero.line2": "DE MARCA", "hero.line3": "QUE GENERA", "hero.line4": "ATENCIÓ.",
-    "hero.desc": "Dissenyador de marca que fa que els negocis complexos semblin inevitables. Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.",
-    "hero.cta": "Veure Treball →", "hero.scroll": "desplaça per explorar",
-    "work.title": "Treball\nSeleccionat", "work.count": "06 — Projectes", "work.label": "Destacat",
-    "proj.celonis.tag": "SaaS · Sistema de Marca", "proj.sap.tag": "SaaS · Comunicació",
-    "proj.ams.tag": "Ciutat · Identitat", "proj.fluidra.tag": "Manufactura · Branding",
-    "proj.lv.tag": "Luxe · Moviment / 3D", "proj.rimowa.tag": "Luxe · Marca / IA",
-    "proj.frontrow.tag": "Educació · Branding",
-    "statement.line1": "NO NOMÉS", "statement.line2": "EL QUÈ", "statement.line3": "SINÓ EL", "statement.line4": "COM.",
-    "stat.years": "Anys actiu", "stat.projects": "Projectes", "stat.sectors": "Sectors",
-    "testimonials.label": "Testimonis",
-    "testimonial.1.body": '"El Joaquim equilibra la creativitat a un alt nivell amb els requisits empresarials. Va aprendre a caminar en aquesta línia com un professional."',
-    "testimonial.1.role": "Chief Brand Officer, Celonis",
-    "testimonial.2.body": '"El Joaquim va ser un gran actiu — aportant les seves competències de disseny a la nostra estratègia de comunicació amb flexibilitat i presència a tots els nivells."',
-    "testimonial.2.role": "Humanizing Business",
-    "services.title": "Serveis", "services.subtitle": "Disseny estratègic per a marques que importen",
-    "srv.1.name": "Identitat de Marca", "srv.1.desc": "Sistemes visuals que donen als negocis una identitat clara i duradora.",
-    "srv.2.name": "Estratègia Visual", "srv.2.desc": "Posicionament, marcs de missatges i arquitectura de marca.",
-    "srv.3.name": "Disseny Digital", "srv.3.desc": "UX/UI arrelat en la lògica de marca, no només en la convenció.",
-    "srv.4.name": "Moviment & 3D", "srv.4.desc": "Narració de marca a través de Cinema 4D, animació i motion editorial.",
-    "about.label": "Sobre mi", "about.available": "Disponible — Freelance i temps complet",
-    "about.stmt1": "El disseny no és", "about.stmt2": "decoració.", "about.stmt3": "És l'argument.",
-    "about.bio": "Dissenyador gràfic amb base a Barcelona. Especialitzat en identitat de marca per a corporacions en SaaS, manufactura i moda — treballant tant in-house com de forma independent.",
-    "contact.label": "Contacta'm", "contact.line1": "FEM", "contact.line2": "QUELCOM", "contact.line3": "GRAN.",
-    "form.name": "Nom", "form.email": "Correu", "form.project": "Tipus de projecte",
-    "form.message": "Explica'm el teu projecte...", "form.send": "Enviar missatge"
+    eyebrow: '— Barcelona · Dissenyador de Marca · Disponible',
+    l1:'DISSENY', l2:'DE MARCA', l3:'QUE GENERA', l4:'ATENCIÓ.',
+    desc:'Dissenyador de marca que fa els negocis complexos inevitables.<br>Celonis · SAP · Rimowa · Louis Vuitton · Amsterdam.',
+    cta:'Veure Treball →', wtitle:'Treball Seleccionat', wcount:'08 Projectes'
   }
 };
 
-let currentLang = 'en';
-
-function setLang(lang) {
-  currentLang = lang;
-  document.querySelectorAll('.nav-lang button').forEach(b => b.classList.remove('active'));
-  document.querySelector(`.nav-lang button[onclick="setLang('${lang}')"]`).classList.add('active');
-  const t = translations[lang];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const key = el.getAttribute('data-i18n');
-    if (t[key] !== undefined) el.textContent = t[key];
-  });
-  document.querySelectorAll('[data-i18n-placeholder]').forEach(el => {
-    const key = el.getAttribute('data-i18n-placeholder');
-    if (t[key] !== undefined) el.placeholder = t[key];
-  });
+function setLang(l) {
+  document.querySelectorAll('.nav-lang button').forEach(b => b.classList.remove('on'));
+  document.querySelector(`.nav-lang button[onclick="setLang('${l}')"]`).classList.add('on');
+  const t = T[l];
+  document.getElementById('eyebrow').textContent = t.eyebrow;
+  document.getElementById('l1').textContent = t.l1;
+  document.getElementById('l2').textContent = t.l2;
+  document.getElementById('l3').textContent = t.l3;
+  document.getElementById('l4').textContent = t.l4;
+  document.getElementById('desc').innerHTML = t.desc;
+  document.getElementById('cta').textContent = t.cta;
+  document.getElementById('wtitle').textContent = t.wtitle;
+  document.getElementById('wcount').textContent = t.wcount;
 }
 
-/* ─── SCROLL REVEAL ───────────────────────────────────────── */
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if (e.isIntersecting) { e.target.classList.add('visible'); }
-  });
-}, { threshold: 0.1 });
-document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-
-/* ─── CURSOR ─────────────────────────────────────────────── */
-const dot = document.getElementById('cursorDot');
-const ring = document.getElementById('cursorRing');
-let mx = 0, my = 0, rx = 0, ry = 0;
-
-document.addEventListener('mousemove', e => {
-  mx = e.clientX; my = e.clientY;
-  dot.style.left = mx + 'px';
-  dot.style.top = my + 'px';
+/* ── NAV scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('light', window.scrollY > window.innerHeight - 80);
 });
 
-function animRing() {
-  rx += (mx - rx) * 0.12;
-  ry += (my - ry) * 0.12;
-  ring.style.left = rx + 'px';
-  ring.style.top = ry + 'px';
-  requestAnimationFrame(animRing);
-}
-animRing();
+/* ── HERO CANVAS DRAWING ── */
+(function() {
+  const hero   = document.getElementById('hero');
+  const canvas = document.getElementById('heroCanvas');
+  const ctx    = canvas.getContext('2d');
+  const hint   = document.getElementById('drawHint');
 
-document.querySelectorAll('a, button, .proj, .service-item').forEach(el => {
-  el.addEventListener('mouseenter', () => {
-    ring.style.width = '48px';
-    ring.style.height = '48px';
-    ring.style.borderCol
+  const colors = ['#AAFF00','#FF3366','#00CFFF','#FF8C00','#9B59B6','#FF4500','#00FF88','#FFD700','#ffffff','#2EC4B6'];
+  let ci = 0, step = 0, lx = null, ly = null, drawn = false;
+
+  function resize() {
+    const dpr = window.devicePixelRatio || 1;
+    const w = hero.offsetWidth, h = hero.offsetHeight;
+    const tmp = document.createElement('canvas');
+    tmp.width = canvas.width; tmp.height = canvas.height;
+    tmp.getContext('2d').drawImage(canvas, 0, 0);
+    canvas.width = w * dpr; canvas.height = h * dpr;
+    ctx.scale(dpr, dpr);
+    ctx.drawImage(tmp, 0, 0, w, h);
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  function draw(x, y) {
+    if (!drawn) { drawn = true; hint.style.opacity = '0'; }
+    if (lx === null) { lx = x; ly = y; return; }
+    const dx = x-lx, dy = y-ly;
+    const spd = Math.sqrt(dx*dx + dy*dy);
+    if (spd < 0.4) return;
+    step += spd;
+    if (step > 60) { step = 0; ci = (ci+1) % colors.length; }
+    ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+    ctx.strokeStyle = colors[ci];
+    ctx.lineWidth = Math.max(1.5, Math.min(26, spd * 0.65));
+    ctx.shadowBlur = spd > 6 ? 14 : 0;
+    ctx.shadowColor = colors[ci];
+    ctx.globalAlpha = Math.min(1, 0.5 + spd * 0.05);
+    ctx.beginPath(); ctx.moveTo(lx, ly); ctx.lineTo(x, y); ctx.stroke();
+    ctx.shadowBlur = 0; ctx.globalAlpha = 1;
+    lx = x; ly = y;
+  }
+
+  hero.addEventListener('mousemove', e => {
+    const r = hero.getBoundingClientRect();
+    draw(e.clientX - r.left, e.clientY - r.top);
+  });
+  hero.addEventListener('mouseenter', e => {
+    const r = hero.getBoundingClientRect();
+    lx = e.clientX - r.left; ly = e.clientY - r.top;
+    ctx.beginPath(); ctx.arc(lx, ly, 4, 0, Math.PI*2);
+    ctx.fillStyle = colors[ci]; ctx.fill();
+    if (!drawn) { drawn = true; hint.style.opacity = '0'; }
+  });
+  hero.addEventListener('mouseleave', () => { lx = null; ly = null; });
+})();
+</script>
+</body>
+</html>
