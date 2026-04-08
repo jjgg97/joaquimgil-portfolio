@@ -3,20 +3,262 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Louis Vuitton — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<title>Louis Vuitton — Imagination · Joaquim Gil</title>
+<meta name="description" content="A surreal Cinema 4D motion piece exploring the Louis Vuitton Imagination fragrance universe — a universe made of glass, light and luxury.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--gold:#C9A96E;--border:rgba(10,10,10,.1);--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--fm:'IBM Plex Mono',monospace;}
+body{background:var(--black);color:var(--white);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(10,10,10,.95);backdrop-filter:blur(10px);border-bottom:.5px solid rgba(255,255,255,.06);}
+.logo{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:#fff;text-decoration:none;}
+.logo em{color:var(--green);font-style:normal;}
+.back{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);text-decoration:none;transition:color .2s;}
+.back:hover{color:#fff;}
+.back::before{content:'← ';}
+
+/* HERO — full black, luxury */
+.hero{margin-top:56px;height:88vh;position:relative;overflow:hidden;background:var(--black);}
+.hero img{width:100%;height:100%;object-fit:cover;display:block;opacity:.5;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px;background:linear-gradient(to top,rgba(0,0,0,.9) 0%,rgba(0,0,0,.3) 60%,transparent 100%);}
+.hero-tag{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gold);margin-bottom:12px;}
+.hero-title{font-family:var(--fd);font-weight:900;font-size:clamp(52px,9vw,130px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--fb);font-size:14px;font-weight:300;color:rgba(255,255,255,.45);margin-top:16px;max-width:480px;line-height:1.65;}
+
+/* META — dark */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);}
+.meta-item{padding:28px 40px;border-right:.5px solid rgba(255,255,255,.06);border-bottom:.5px solid rgba(255,255,255,.06);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;}
+.meta-val{font-family:var(--fd);font-weight:700;font-size:clamp(16px,2vw,24px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;color:#fff;}
+
+/* VIDEO SECTION */
+.video-wrap{position:relative;width:100%;padding-bottom:56.25%;background:#000;}
+.video-wrap iframe{position:absolute;inset:0;width:100%;height:100%;border:none;}
+.video-label{padding:16px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.3);border-bottom:.5px solid rgba(255,255,255,.06);}
+
+/* INTRO — dark background */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 40px;border-bottom:.5px solid rgba(255,255,255,.06);}
+.eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:18px;height:.5px;background:rgba(255,255,255,.3);}
+.intro-h{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5.5vw,72px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.intro-h .g{color:var(--gold);}
+.body-text{font-family:var(--fb);font-weight:300;font-size:14px;color:rgba(255,255,255,.5);line-height:1.82;margin-bottom:20px;}
+.body-text:last-child{margin-bottom:0;}
+.body-text strong{font-weight:500;color:#fff;}
+
+/* BLOCKS — dark */
+.blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:rgba(255,255,255,.06);}
+.block{background:var(--black);padding:40px;}
+.block-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
+.block-title{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;color:#fff;}
+.block-text{font-family:var(--fb);font-weight:300;font-size:13px;color:rgba(255,255,255,.45);line-height:1.7;}
+
+/* IMAGES */
+.img-full{width:100%;display:block;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-cover{width:100%;height:65vh;overflow:hidden;}
+.img-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-two img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.img-three img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.gap{height:2px;background:rgba(255,255,255,.04);}
+.caption{padding:14px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);border-bottom:.5px solid rgba(255,255,255,.06);}
+
+/* QUOTE */
+.quote{background:#0D0D0D;padding:72px 40px;border-top:.5px solid rgba(255,255,255,.06);border-bottom:.5px solid rgba(255,255,255,.06);}
+.quote-text{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.5vw,48px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:760px;}
+.quote-text .g{color:var(--gold);}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:40px;border-top:.5px solid rgba(255,255,255,.06);}
+.tag{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.35);border:.5px solid rgba(255,255,255,.1);padding:5px 12px;}
+
+/* NEXT */
+.next{display:flex;align-items:center;justify-content:space-between;padding:56px 40px;border-top:.5px solid rgba(255,255,255,.06);text-decoration:none;transition:background .2s;background:var(--black);}
+.next:hover{background:#111;}
+.next-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.3);}
+.next-name{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,72px);letter-spacing:-.025em;text-transform:uppercase;color:#fff;margin-top:6px;}
+.next-arr{font-family:var(--fd);font-weight:900;font-size:56px;color:var(--green);}
+
+footer{background:#000;padding:22px 40px;display:flex;align-items:center;justify-content:space-between;border-top:.5px solid rgba(255,255,255,.05);}
+.fcopy{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.flinks{display:flex;gap:20px;}
+.flinks a{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero-overlay{padding:32px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:20px;}
+  .intro{grid-template-columns:1fr;gap:32px;padding:48px 20px;}
+  .blocks{grid-template-columns:1fr;}
+  .block{padding:28px 20px;}
+  .img-two{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .caption{padding:12px 20px;}
+  .video-label{padding:12px 20px;}
+  .quote{padding:48px 20px;}
+  .tags{padding:28px 20px;}
+  .next{padding:40px 20px;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">Louis Vuitton</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<em>.</em>G</a>
+  <a href="index.html#work" class="back">All Work</a>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="Louis Vuitton Imagination — Cinema 4D">
+  <div class="hero-overlay">
+    <div class="hero-tag">06 &mdash; Luxury &middot; Motion & 3D &middot; Cinema 4D &middot; Personal Project</div>
+    <h1 class="hero-title">Louis Vuitton<br>&mdash; Imagination</h1>
+    <p class="hero-sub">A universe made of glass. A fragrance turned into a planet. A motion piece exploring luxury through light, reflection and rhythm.</p>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Project</div><div class="meta-val">LV — Imagination</div></div>
+  <div class="meta-item"><div class="meta-label">Type</div><div class="meta-val">Motion & 3D · Concept</div></div>
+  <div class="meta-item"><div class="meta-label">Tool</div><div class="meta-val">Cinema 4D</div></div>
+  <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2022</div></div>
+</div>
+
+<!-- VIDEO -->
+<div class="video-wrap">
+  <iframe
+    src="https://www.youtube.com/embed/eRUj5vtx_kY"
+    title="Creating a Surreal World in Cinema 4D to Advertise Imaginary by Louis Vuitton — Joaquim Gil"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen>
+  </iframe>
+</div>
+<div class="video-label">
+  "Creating a Surreal World in Cinema 4D to Advertise Imaginary by Louis Vuitton" &mdash;
+  <a href="https://www.youtube.com/watch?v=eRUj5vtx_kY" target="_blank" style="color:rgba(255,255,255,.5);text-decoration:none;border-bottom:.5px solid rgba(255,255,255,.2);padding-bottom:1px;">Watch on YouTube ↗</a>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="eyebrow">A Universe Made of Glass</div>
+    <h2 class="intro-h">Scent as<br>a Place in<br><span class="g">Space.</span></h2>
+  </div>
+  <div>
+    <p class="body-text">This is my visual exploration of a fragrance &mdash; not as a product, but as a <strong>place</strong>. I imagined a universe where everything is made of glass: fragile, reflective, infinite.</p>
+    <p class="body-text">Just like scent, glass is <strong>invisible until light hits it</strong>. It bends reality. It holds memories. It feels delicate &mdash; but it shapes space.</p>
+    <p class="body-text">For this motion piece, I wanted to build a <strong>world around the Louis Vuitton Imagination fragrance</strong> &mdash; turning the bottle into a planet, the liquid into stardust, and the atmosphere into light trails of emotion.</p>
+    <p class="body-text">The result is an <strong>abstract, floating dimension</strong> &mdash; suspended somewhere between luxury and dream. It's a place you can't quite touch, but you feel it. This is how I see scent: as a story told in light, reflection, and rhythm.</p>
+  </div>
+</div>
+
+<!-- CASE BLOCKS -->
+<div class="blocks">
+  <div class="block">
+    <div class="block-label">Context</div>
+    <div class="block-title">Luxury brand storytelling through 3D motion</div>
+    <p class="block-text">Louis Vuitton Imagination is a fragrance built on the concept of wonder and the unexpected. The challenge was to create a visual world that matched that ambition &mdash; surreal, refined, and technically precise &mdash; using Cinema 4D as the sole instrument.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Approach</div>
+    <div class="block-title">The bottle as a universe</div>
+    <p class="block-text">Rather than showcase the product conventionally, the bottle becomes a planet. The liquid becomes stardust. The glass becomes the atmosphere. Every element of the fragrance's physical identity is reinterpreted as something cosmic &mdash; intimate yet infinite.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Outcome</div>
+    <div class="block-title">A surreal motion world in glass and light</div>
+    <p class="block-text">A fully realised 3D motion piece capturing the emotional territory of the LV fragrance universe &mdash; material precision, editorial rhythm, and a luxury aesthetic that feels entirely new while remaining unmistakably Louis Vuitton.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- BEHANCE IMAGES -->
+<div class="img-cover">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="LV Imagination — Cinema 4D render" loading="lazy">
+</div>
+<div class="caption">Cinema 4D render &mdash; LV Imagination universe, glass &amp; light</div>
+
+<div class="img-two">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/a561bb146595425.62b31cc10117a.png" alt="LV Imagination render" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/802c36146595425.62b31cc100a42.png" alt="LV Imagination render" loading="lazy">
+</div>
+<div class="caption">3D renders &mdash; Material studies in glass, reflection and liquid light</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <p class="quote-text">"The bottle becomes a planet. The liquid becomes stardust. <span class="g">A place you can't quite touch,</span> but you feel it."</p>
+</div>
+
+<!-- THREE MORE -->
+<div class="img-three">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/1d8421146595425.62b31cc0f3ce4.png" alt="LV Imagination" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/e25ee9146595425.62b31cc10019c.png" alt="LV Imagination" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_632_webp/9a1a22146595425.62b31cc0f350f.png" alt="LV Imagination" loading="lazy">
+</div>
+<div class="caption">Motion stills &mdash; Glass universe, stardust and floating dimension</div>
+
+<!-- DELIVERABLES -->
+<div class="blocks" style="margin-top:2px">
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Concept Motion Film</div>
+    <p class="block-text">A fully realised motion piece created in Cinema 4D &mdash; building a complete visual world around the Louis Vuitton Imagination fragrance. Glass, light, reflection and rhythm as the core visual language.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">3D Material Studies</div>
+    <p class="block-text">Extensive Cinema 4D material and lighting studies exploring how glass, liquid and reflective surfaces behave under different light conditions &mdash; building the physical vocabulary of the Imagination universe.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Art Direction</div>
+    <p class="block-text">Complete art direction of a luxury brand concept &mdash; from initial vision to final render, including composition, colour grading, motion pacing and the narrative arc of scent as a story told in light.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">Cinema 4D</span>
+  <span class="tag">Motion Design</span>
+  <span class="tag">3D</span>
+  <span class="tag">Luxury</span>
+  <span class="tag">Art Direction</span>
+  <span class="tag">Louis Vuitton</span>
+  <span class="tag">Fragrance</span>
+  <span class="tag">Concept</span>
+  <span class="tag">Personal Project</span>
+  <span class="tag">2022</span>
+</div>
+
+<!-- NEXT -->
+<a href="rimowa.html" class="next">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">Rimowa</div>
+  </div>
+  <div class="next-arr">&rarr;</div>
+</a>
+
+<footer>
+  <div class="fcopy">&copy; 2025 Joaquim Gil &mdash; Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
 </body>
 </html>
