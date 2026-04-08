@@ -3,20 +3,273 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Fluidra — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<title>Fluidra Iberia — Joaquim Gil</title>
+<meta name="description" content="In-house brand designer at Fluidra Iberia — B2B content strategy, Instagram growth, infographics and brand identity across multiple commercial brands.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--blue:#005B8E;--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--fm:'IBM Plex Mono',monospace;}
+body{background:var(--white);color:var(--black);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(245,243,238,.95);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo em{color:var(--green);font-style:normal;}
+.back{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.back:hover{color:var(--black);}
+.back::before{content:'← ';}
+
+/* HERO - uses the Fluidra bubble GIF as background feel */
+.hero{margin-top:56px;height:88vh;position:relative;overflow:hidden;background:#F0F8FF;}
+.hero-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;opacity:.15;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px;}
+.hero-tag{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--blue);margin-bottom:12px;}
+.hero-title{font-family:var(--fd);font-weight:900;font-size:clamp(56px,10vw,140px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:var(--black);}
+.hero-sub{font-family:var(--fb);font-size:14px;font-weight:300;color:var(--mid);margin-top:16px;max-width:480px;line-height:1.65;}
+
+/* META */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);}
+.meta-item{padding:28px 40px;border-right:.5px solid var(--border);border-bottom:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.meta-val{font-family:var(--fd);font-weight:700;font-size:clamp(16px,2vw,24px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+
+/* INTRO */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 40px;border-bottom:.5px solid var(--border);}
+.eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:18px;height:.5px;background:var(--gray);}
+.intro-h{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5.5vw,72px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-h .g{color:var(--green);}
+.body-text{font-family:var(--fb);font-weight:300;font-size:14px;color:var(--mid);line-height:1.82;margin-bottom:20px;}
+.body-text:last-child{margin-bottom:0;}
+.body-text strong{font-weight:500;color:var(--black);}
+
+/* BLOCKS */
+.blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);}
+.block{background:var(--white);padding:40px;}
+.block-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.block-title{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;}
+.block-text{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* IMAGES */
+.img-full{width:100%;display:block;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-cover{width:100%;height:65vh;overflow:hidden;}
+.img-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-two img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.img-three img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.img-four{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:2px;}
+.img-four img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.gap{height:2px;background:var(--border);}
+.caption{padding:14px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+
+/* STAT ROW */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--black);margin:2px 0;}
+.stat-item{background:var(--black);padding:40px;text-align:center;}
+.stat-num{font-family:var(--fd);font-weight:900;font-size:clamp(40px,7vw,88px);letter-spacing:-.03em;line-height:1;color:var(--green);}
+.stat-label{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:8px;}
+
+/* QUOTE */
+.quote{background:var(--black);padding:72px 40px;}
+.quote-text{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.5vw,48px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:760px;}
+.quote-text .g{color:var(--green);}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:40px;border-top:.5px solid var(--border);}
+.tag{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:5px 12px;}
+
+/* NEXT */
+.next{display:flex;align-items:center;justify-content:space-between;padding:56px 40px;border-top:.5px solid var(--border);text-decoration:none;transition:background .2s;}
+.next:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,72px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:6px;}
+.next-arr{font-family:var(--fd);font-weight:900;font-size:56px;color:var(--green);}
+
+footer{background:var(--black);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;}
+.fcopy{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.flinks{display:flex;gap:20px;}
+.flinks a{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero-overlay{padding:32px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:20px;}
+  .intro{grid-template-columns:1fr;gap:32px;padding:48px 20px;}
+  .blocks{grid-template-columns:1fr;}
+  .block{padding:28px 20px;}
+  .img-two,.img-four{grid-template-columns:1fr 1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .caption{padding:12px 20px;}
+  .stats{grid-template-columns:1fr;}
+  .quote{padding:48px 20px;}
+  .tags{padding:28px 20px;}
+  .next{padding:40px 20px;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">Fluidra</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<em>.</em>G</a>
+  <a href="index.html#work" class="back">All Work</a>
+</nav>
+
+<!-- HERO — light, airy, pool blue feel -->
+<div class="hero">
+  <div class="hero-bg">
+    <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/2ef33f5c-a1c1-46ac-89f5-14e5dfcf815c/fluidra+bubble+logo_v1+%281%29.gif" alt="">
+  </div>
+  <div class="hero-overlay">
+    <div class="hero-tag">03 &mdash; Manufacturing &middot; Brand Identity &middot; Sant Cugat del Vallès</div>
+    <h1 class="hero-title">Fluidra<br>Iberia</h1>
+    <p class="hero-sub">In-house brand designer at Fluidra's Iberia Marketing HQ &mdash; building brand and B2B customer experience for a global leader in pool and wellness.</p>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">Fluidra Iberia</div></div>
+  <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">In-house Brand Designer</div></div>
+  <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">Manufacturing &middot; Pool & Wellness</div></div>
+  <div class="meta-item"><div class="meta-label">Location</div><div class="meta-val">Sant Cugat del Vallès</div></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="eyebrow">Turn Water Into a Better World</div>
+    <h2 class="intro-h">Brand &amp;<br>Content at<br><span class="g">Scale.</span></h2>
+  </div>
+  <div>
+    <p class="body-text">Under the mission <strong>"Turn water into a better world"</strong>, Fluidra is a major player in the swimming pool manufacturing industry with strong values and a great work culture. I had the chance to work surrounded by amazing professionals in the <strong>Iberia Marketing team</strong>, building brand and B2B customer experience from their headquarters in Sant Cugat del Vallès, near Barcelona.</p>
+    <p class="body-text">At Fluidra, we operate under a range of <strong>different commercial brands</strong> that each cater to specific market needs within the pool and wellness industry. This brand architecture allows us to stay close to our customers and deliver specialised content through each channel.</p>
+    <p class="body-text">Over the past few months, we've seen significant growth in one of our key Instagram accounts &mdash; reaching <strong>nearly 20,000 followers in just three months</strong>. This rapid increase reflects the relevance of our content strategy, community engagement, and consistency in visual storytelling.</p>
+    <p class="body-text">As part of the content team, I focused on designing <strong>infographics and branded visuals</strong> for Instagram posts that required graphic design support &mdash; boosting visibility, encouraging saves and shares, and reinforcing each brand's positioning as a trusted source of knowledge and innovation in the pool industry.</p>
+  </div>
+</div>
+
+<!-- CASE BLOCKS -->
+<div class="blocks">
+  <div class="block">
+    <div class="block-label">Context</div>
+    <div class="block-title">Multi-brand architecture in a global manufacturing leader</div>
+    <p class="block-text">Fluidra operates multiple commercial brands under one roof &mdash; each with distinct audiences, visual identities and content needs. The challenge: maintain brand coherence across the whole portfolio while giving each brand its own distinct voice and aesthetic.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Approach</div>
+    <div class="block-title">Content strategy meets visual craft</div>
+    <p class="block-text">Developed branded infographics and visual content for Instagram with a strong focus on clarity, aesthetics and alignment with each brand's visual identity. Every design had to work both as a standalone post and as part of a cohesive feed strategy.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Outcome</div>
+    <div class="block-title">20,000 followers in 3 months</div>
+    <p class="block-text">One of the key Instagram accounts grew to nearly 20,000 followers in just three months &mdash; a direct result of consistent, high-quality branded content. Posts optimised for saves, shares and engagement reinforced positioning as an industry authority.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat-item">
+    <div class="stat-num">20K</div>
+    <div class="stat-label">Followers in 3 months</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">3+</div>
+    <div class="stat-label">Commercial brands</div>
+  </div>
+  <div class="stat-item">
+    <div class="stat-num">B2B</div>
+    <div class="stat-label">Customer experience focus</div>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- MAIN VISUAL: Inside Sales WhatsApp Arena -->
+<div class="img-cover">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3db8d169-f80c-44b1-885d-320229618412/inside+sales_ep2535_Whatsapp_arena.png" alt="Fluidra Inside Sales — Arena campaign" loading="lazy">
+</div>
+<div class="caption">Fluidra Inside Sales &mdash; Arena campaign visual</div>
+
+<!-- TWO: Portada Calida + Din A4 -->
+<div class="img-two">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/25823337-078d-4c4b-9d6f-f79f676ff147/Portada+Calida.png" alt="Fluidra Calida — Brand visual" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/57be9be1-7219-44e7-b57d-245237f6fd68/din+A4gama_aura.png" alt="Fluidra Aura — DIN A4 brand collateral" loading="lazy">
+</div>
+<div class="caption">Brand collateral &mdash; Calida &amp; Aura product ranges</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <p class="quote-text">"Strong values, great work culture. Building <span class="g">brand and B2B customer experience</span> from the inside &mdash; surrounded by amazing professionals."</p>
+</div>
+
+<!-- THREE: Calida M + WhatsApp + more -->
+<div class="img-three">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3a70552c-1d8b-4913-a858-fa76a9142838/Calida+M.png" alt="Fluidra Calida M" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/775350b9-309e-457c-9450-676b60559dd9/WhatsApp+Image+2025-07-11+at+11.31.59+AM.jpeg" alt="Fluidra brand work" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/48e2acc5-9b82-431c-b010-209c2f942669/1747741807017.jpg" alt="Fluidra brand visual" loading="lazy">
+</div>
+<div class="caption">Brand visuals &mdash; Multi-brand content across Fluidra's commercial portfolio</div>
+
+<!-- DELIVERABLES -->
+<div class="blocks" style="margin-top:2px">
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Instagram Content System</div>
+    <p class="block-text">Designed infographics and branded visuals for Instagram posts across multiple commercial brands &mdash; each tailored to specific audience needs while maintaining the overall Fluidra brand architecture and quality standards.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Brand Collateral</div>
+    <p class="block-text">Produced B2B brand collateral including product range presentations, campaign visuals and sales support materials for the Iberia market &mdash; covering brands including Calida, Aura and Inside Sales commercial channels.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Visual Identity Support</div>
+    <p class="block-text">Supported brand consistency across Fluidra's multi-brand portfolio &mdash; ensuring each commercial brand maintained its distinct visual identity while remaining coherent within the wider Fluidra brand architecture.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">Brand Identity</span>
+  <span class="tag">Instagram Content</span>
+  <span class="tag">Infographics</span>
+  <span class="tag">B2B Marketing</span>
+  <span class="tag">Multi-brand</span>
+  <span class="tag">Manufacturing</span>
+  <span class="tag">Pool & Wellness</span>
+  <span class="tag">In-house</span>
+  <span class="tag">Content Strategy</span>
+  <span class="tag">Visual Storytelling</span>
+</div>
+
+<!-- NEXT -->
+<a href="frontrow.html" class="next">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">English for Fashion</div>
+  </div>
+  <div class="next-arr">&rarr;</div>
+</a>
+
+<footer>
+  <div class="fcopy">&copy; 2025 Joaquim Gil &mdash; Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
 </body>
 </html>
