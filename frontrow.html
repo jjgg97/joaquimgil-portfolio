@@ -4,19 +4,246 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>English for Fashion — Joaquim Gil</title>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@900&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
+<meta name="description" content="Graphic Design & Social Media Intern at English for Fashion — visual identity, social media campaigns, and editorial design for a fashion education brand. 2020.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;700;900&family=Barlow:wght@300;400;500&family=IBM+Plex+Mono:wght@400&display=swap" rel="stylesheet">
 <style>
-*{box-sizing:border-box;margin:0;padding:0;}
-body{background:#0A0A0A;color:#F5F3EE;font-family:'Barlow Condensed',sans-serif;min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:32px;}
-.title{font-weight:900;font-size:clamp(48px,12vw,140px);letter-spacing:-.03em;text-transform:uppercase;line-height:.88;text-align:center;}
-.tag{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:#AAFF00;}
-.back{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.3);text-decoration:none;border:.5px solid rgba(255,255,255,.15);padding:10px 20px;transition:all .2s;}
-.back:hover{color:#AAFF00;border-color:#AAFF00;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+html{scroll-behavior:smooth;}
+:root{--black:#0A0A0A;--white:#F5F3EE;--green:#AAFF00;--gray:#888;--mid:#444;--border:rgba(10,10,10,.1);--fd:'Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif;--fm:'IBM Plex Mono',monospace;}
+body{background:var(--white);color:var(--black);font-family:var(--fb);font-weight:300;overflow-x:hidden;cursor:crosshair;}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 40px;height:56px;background:rgba(245,243,238,.95);backdrop-filter:blur(10px);border-bottom:.5px solid var(--border);}
+.logo{font-family:var(--fd);font-weight:900;font-size:17px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
+.logo em{color:var(--green);font-style:normal;}
+.back{font-family:var(--fm);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;transition:color .2s;}
+.back:hover{color:var(--black);}
+.back::before{content:'← ';}
+
+/* HERO — editorial, fashion-dark */
+.hero{margin-top:56px;height:88vh;position:relative;overflow:hidden;background:var(--black);}
+.hero img{width:100%;height:100%;object-fit:cover;display:block;opacity:.6;}
+.hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:48px 40px;background:linear-gradient(to top,rgba(0,0,0,.8) 0%,rgba(0,0,0,.2) 60%,transparent 100%);}
+.hero-tag{font-family:var(--fm);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
+.hero-title{font-family:var(--fd);font-weight:900;font-size:clamp(48px,9vw,130px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
+.hero-sub{font-family:var(--fb);font-size:14px;font-weight:300;color:rgba(255,255,255,.5);margin-top:16px;max-width:480px;line-height:1.65;}
+
+/* META */
+.meta-bar{display:grid;grid-template-columns:repeat(4,1fr);}
+.meta-item{padding:28px 40px;border-right:.5px solid var(--border);border-bottom:.5px solid var(--border);}
+.meta-item:last-child{border-right:none;}
+.meta-label{font-family:var(--fm);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:6px;}
+.meta-val{font-family:var(--fd);font-weight:700;font-size:clamp(16px,2vw,24px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
+
+/* INTRO */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:64px;padding:80px 40px;border-bottom:.5px solid var(--border);}
+.eyebrow{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);margin-bottom:20px;display:flex;align-items:center;gap:10px;}
+.eyebrow::before{content:'';display:block;width:18px;height:.5px;background:var(--gray);}
+.intro-h{font-family:var(--fd);font-weight:900;font-size:clamp(36px,5.5vw,72px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
+.intro-h .g{color:var(--green);}
+.body-text{font-family:var(--fb);font-weight:300;font-size:14px;color:var(--mid);line-height:1.82;margin-bottom:20px;}
+.body-text:last-child{margin-bottom:0;}
+.body-text strong{font-weight:500;color:var(--black);}
+
+/* BLOCKS */
+.blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);}
+.block{background:var(--white);padding:40px;}
+.block-label{font-family:var(--fm);font-size:8px;letter-spacing:.16em;text-transform:uppercase;color:var(--green);margin-bottom:10px;}
+.block-title{font-family:var(--fd);font-weight:700;font-size:clamp(18px,2.2vw,26px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:14px;line-height:1.1;}
+.block-text{font-family:var(--fb);font-weight:300;font-size:13px;color:var(--mid);line-height:1.7;}
+
+/* IMAGES */
+.img-full{width:100%;display:block;}
+.img-full img{width:100%;height:auto;display:block;}
+.img-cover{width:100%;height:65vh;overflow:hidden;}
+.img-cover img{width:100%;height:100%;object-fit:cover;display:block;}
+.img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-two img{width:100%;aspect-ratio:4/3;object-fit:cover;display:block;}
+.img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;}
+.img-three img{width:100%;aspect-ratio:1;object-fit:cover;display:block;}
+.img-tall-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;}
+.img-tall-two img{width:100%;aspect-ratio:3/4;object-fit:cover;display:block;}
+.gap{height:2px;background:var(--border);}
+.caption{padding:14px 40px;font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
+
+/* QUOTE */
+.quote{background:var(--black);padding:72px 40px;}
+.quote-text{font-family:var(--fd);font-weight:700;font-size:clamp(26px,3.5vw,48px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:760px;}
+.quote-text .g{color:var(--green);}
+
+/* TAGS */
+.tags{display:flex;flex-wrap:wrap;gap:6px;padding:40px;border-top:.5px solid var(--border);}
+.tag{font-family:var(--fm);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:5px 12px;}
+
+/* NEXT */
+.next{display:flex;align-items:center;justify-content:space-between;padding:56px 40px;border-top:.5px solid var(--border);text-decoration:none;transition:background .2s;}
+.next:hover{background:rgba(10,10,10,.03);}
+.next-label{font-family:var(--fm);font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:var(--gray);}
+.next-name{font-family:var(--fd);font-weight:900;font-size:clamp(32px,5vw,72px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:6px;}
+.next-arr{font-family:var(--fd);font-weight:900;font-size:56px;color:var(--green);}
+
+footer{background:var(--black);padding:22px 40px;display:flex;align-items:center;justify-content:space-between;}
+.fcopy{font-family:var(--fm);font-size:9px;color:rgba(255,255,255,.2);letter-spacing:.1em;}
+.flinks{display:flex;gap:20px;}
+.flinks a{font-family:var(--fm);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.25);text-decoration:none;transition:color .2s;}
+.flinks a:hover{color:var(--green);}
+
+@media(max-width:768px){
+  nav{padding:0 20px;}
+  .hero-overlay{padding:32px 20px;}
+  .meta-bar{grid-template-columns:1fr 1fr;}
+  .meta-item{padding:20px;}
+  .intro{grid-template-columns:1fr;gap:32px;padding:48px 20px;}
+  .blocks{grid-template-columns:1fr;}
+  .block{padding:28px 20px;}
+  .img-two,.img-tall-two{grid-template-columns:1fr;}
+  .img-three{grid-template-columns:1fr 1fr;}
+  .caption{padding:12px 20px;}
+  .quote{padding:48px 20px;}
+  .tags{padding:28px 20px;}
+  .next{padding:40px 20px;}
+  footer{flex-direction:column;gap:12px;text-align:center;padding:20px;}
+}
 </style>
 </head>
 <body>
-<div class="tag">Case Study — Coming Soon</div>
-<div class="title">English for Fashion</div>
-<a href="index.html" class="back">← Back to work</a>
+
+<nav>
+  <a href="index.html" class="logo">J<em>.</em>G</a>
+  <a href="index.html#work" class="back">All Work</a>
+</nav>
+
+<!-- HERO — live fashion talk GIF as cover -->
+<div class="hero">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/03a57378-1d41-40f2-97d4-dcf245bfc67c/live-fashionTalk.gif" alt="English for Fashion — Live Fashion Talk">
+  <div class="hero-overlay">
+    <div class="hero-tag">04 &mdash; Education &middot; Brand &amp; Social Media &middot; 2020</div>
+    <h1 class="hero-title">English<br>for Fashion<br>&mdash; Front Row</h1>
+    <p class="hero-sub">Graphic Design &amp; Social Media Intern &mdash; translating fashion education into a distinctive visual language across digital channels.</p>
+  </div>
+</div>
+
+<!-- META -->
+<div class="meta-bar">
+  <div class="meta-item"><div class="meta-label">Client</div><div class="meta-val">English for Fashion</div></div>
+  <div class="meta-item"><div class="meta-label">Role</div><div class="meta-val">Graphic Design & Social Media Intern</div></div>
+  <div class="meta-item"><div class="meta-label">Sector</div><div class="meta-val">Education &middot; Fashion</div></div>
+  <div class="meta-item"><div class="meta-label">Year</div><div class="meta-val">2020</div></div>
+</div>
+
+<!-- INTRO -->
+<div class="intro">
+  <div>
+    <div class="eyebrow">Design meets Fashion Education</div>
+    <h2 class="intro-h">Where Brand<br>Meets<br><span class="g">Education.</span></h2>
+  </div>
+  <div>
+    <p class="body-text">During my internship at English for Fashion, I explored how <strong>design and education can connect through storytelling, culture, and visual identity</strong>. The brand helps fashion professionals and creatives improve their communication skills in English &mdash; and my role was to translate that mission into a distinctive visual language across digital channels.</p>
+    <p class="body-text">I worked closely with the founder to design <strong>social media campaigns, course visuals, and newsletter layouts</strong> that reflected the sophistication and creativity of the fashion industry. I introduced a more consistent use of typography, colour, and visual rhythm to align the educational content with the tone of international fashion communication.</p>
+    <p class="body-text">This experience allowed me to merge my background in graphic design, branding, and digital marketing with a new understanding of how <strong>education and aesthetics can work together</strong>. I focused on creating visuals that were not only visually appealing but also clear, structured, and pedagogical &mdash; helping learners engage more intuitively with the brand's content.</p>
+    <p class="body-text">It was a <strong>small, dynamic environment</strong> where I could experiment freely, test creative ideas quickly, and see immediate impact &mdash; reinforcing my interest in design systems that make information intuitive, inspiring, and accessible.</p>
+  </div>
+</div>
+
+<!-- CASE BLOCKS -->
+<div class="blocks">
+  <div class="block">
+    <div class="block-label">Context</div>
+    <div class="block-title">Fashion education meets editorial visual language</div>
+    <p class="block-text">English for Fashion occupies a niche intersection &mdash; premium language education for fashion professionals. The visual identity needed to feel as sophisticated as the industry it served, while remaining clear and pedagogical enough to support learning.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Approach</div>
+    <div class="block-title">Typography, colour and visual rhythm as tools</div>
+    <p class="block-text">Introduced consistent typographic systems, colour language and visual rhythm across all digital touchpoints. Drew from fashion editorial references &mdash; runway aesthetics, magazine layouts &mdash; to create content that felt native to the industry the brand served.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Outcome</div>
+    <div class="block-title">A cohesive digital presence across all channels</div>
+    <p class="block-text">Delivered a unified visual system for social media campaigns, course visuals and newsletters &mdash; giving the brand a consistent, elevated presence that matched the tone and ambition of the international fashion education market.</p>
+  </div>
+</div>
+
+<div class="gap"></div>
+
+<!-- TWO GIFs -->
+<div class="img-two">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/d5bb7b2e-af6c-4f85-b993-1b30561fb454/IMG_2286-4.gif" alt="English for Fashion social media animation" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/1c1db95d-4f10-42d9-93fa-aec6a22562ac/IMG_2269-4.gif" alt="English for Fashion social media animation" loading="lazy">
+</div>
+<div class="caption">Social media animations &mdash; Instagram campaign content</div>
+
+<!-- TWO SCREENSHOTS -->
+<div class="img-two">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/45975ab1-f2e0-4c6a-a253-03440678cb63/Screenshot+2025-10-19+at+18.09.07.png" alt="English for Fashion digital content" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/0fcfbbb4-1fe7-4edc-b665-18c7c328dc61/Screenshot+2025-10-19+at+18.06.18.png" alt="English for Fashion digital content" loading="lazy">
+</div>
+<div class="caption">Digital content &mdash; Course visuals and campaign assets</div>
+
+<!-- QUOTE -->
+<div class="quote">
+  <p class="quote-text">"Merging graphic design, branding and digital marketing with <span class="g">fashion education</span> &mdash; making information intuitive, inspiring, and accessible."</p>
+</div>
+
+<!-- THREE: Quiz cover + Stayhome + more -->
+<div class="img-three">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/3743960c-04e2-4db0-911a-930a8eaf753d/Quiz+story+cover-01.jpg" alt="English for Fashion quiz story cover" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/99a0144d-3bf1-468d-b8ef-ff01fd455f18/Stayhomewithstyle-01.jpg" alt="Stay Home with Style campaign" loading="lazy">
+  <img src="https://images.squarespace-cdn.com/content/v1/62874c7b9fc3433ebf384c7f/03a57378-1d41-40f2-97d4-dcf245bfc67c/live-fashionTalk.gif" alt="Live Fashion Talk" loading="lazy">
+</div>
+<div class="caption">Campaign visuals &mdash; Quiz stories, #StayHomeWithStyle &amp; Live Fashion Talk</div>
+
+<!-- DELIVERABLES -->
+<div class="blocks" style="margin-top:2px">
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Social Media System</div>
+    <p class="block-text">Designed a cohesive social media visual system for Instagram &mdash; including animated story content, campaign covers, and educational post templates. All aligned to the visual language of international fashion media.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Campaign Visuals</div>
+    <p class="block-text">Produced campaign assets including the #StayHomeWithStyle series, Live Fashion Talk branding, and quiz story formats &mdash; adapting fashion editorial aesthetics for an educational digital-first context.</p>
+  </div>
+  <div class="block">
+    <div class="block-label">Deliverable</div>
+    <div class="block-title">Brand Visual Identity</div>
+    <p class="block-text">Introduced consistent typographic systems, colour palettes and layout grids across all brand touchpoints &mdash; newsletters, course visuals and digital campaigns &mdash; elevating the brand's overall visual coherence.</p>
+  </div>
+</div>
+
+<!-- TAGS -->
+<div class="tags">
+  <span class="tag">Brand Identity</span>
+  <span class="tag">Social Media</span>
+  <span class="tag">Instagram</span>
+  <span class="tag">Editorial Design</span>
+  <span class="tag">Fashion Education</span>
+  <span class="tag">Typography</span>
+  <span class="tag">Newsletter</span>
+  <span class="tag">Motion</span>
+  <span class="tag">Content Strategy</span>
+  <span class="tag">Internship</span>
+  <span class="tag">2020</span>
+</div>
+
+<!-- NEXT -->
+<a href="amsterdam.html" class="next">
+  <div>
+    <div class="next-label">Next Project</div>
+    <div class="next-name">Amsterdam City Brand</div>
+  </div>
+  <div class="next-arr">&rarr;</div>
+</a>
+
+<footer>
+  <div class="fcopy">&copy; 2025 Joaquim Gil &mdash; Brand Designer, Barcelona</div>
+  <div class="flinks">
+    <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
+    <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
+    <a href="mailto:joaquimxgil@gmail.com">joaquimxgil@gmail.com</a>
+  </div>
+</footer>
+
 </body>
 </html>
