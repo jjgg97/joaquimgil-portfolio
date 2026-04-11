@@ -13,33 +13,24 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
 body{background:var(--white);color:var(--black);font-family:var(--font-b);font-weight:300;overflow-x:hidden;}
-
-/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:20px 48px;background:rgba(245,243,238,.96);backdrop-filter:blur(12px);border-bottom:.5px solid var(--border);}
 .logo{font-family:var(--font-d);font-weight:900;font-size:18px;letter-spacing:.06em;text-transform:uppercase;color:var(--black);text-decoration:none;}
 .logo span{color:var(--green);}
 .nav-back{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--gray);text-decoration:none;display:flex;align-items:center;gap:8px;transition:color .2s;}
 .nav-back:hover{color:var(--black);}
 .nav-back::before{content:'←';}
-
-/* HERO */
 .hero{margin-top:61px;width:100%;height:90vh;position:relative;overflow:hidden;background:var(--black);}
 .hero img{width:100%;height:100%;object-fit:cover;opacity:.75;}
 .hero-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:flex-end;padding:64px 48px;}
 .hero-tag{font-family:var(--font-m);font-size:10px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:16px;}
 .hero-title{font-family:var(--font-d);font-weight:900;font-size:clamp(64px,11vw,160px);line-height:.87;letter-spacing:-.025em;text-transform:uppercase;color:#fff;}
 .hero-sub{font-family:var(--font-b);font-size:15px;font-weight:300;color:rgba(255,255,255,.5);margin-top:20px;max-width:500px;line-height:1.7;}
-
-/* META BAR */
 .meta-bar{display:grid;grid-template-columns:repeat(4,1fr);border-bottom:.5px solid var(--border);}
 .meta-item{padding:32px 48px;border-right:.5px solid var(--border);}
 .meta-item:last-child{border-right:none;}
 .meta-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);margin-bottom:8px;}
 .meta-val{font-family:var(--font-d);font-weight:700;font-size:clamp(18px,2.5vw,28px);letter-spacing:-.01em;text-transform:uppercase;line-height:1;}
-
-/* INTRO */
 .intro{display:grid;grid-template-columns:1fr 1fr;gap:80px;padding:100px 48px;}
-.intro-left{}
 .section-eyebrow{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);display:flex;align-items:center;gap:10px;margin-bottom:24px;}
 .section-eyebrow::before{content:'';display:block;width:20px;height:.5px;background:var(--gray);}
 .intro-headline{font-family:var(--font-d);font-weight:900;font-size:clamp(40px,6vw,80px);line-height:.9;letter-spacing:-.025em;text-transform:uppercase;}
@@ -47,60 +38,40 @@ nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:cen
 .intro-right{display:flex;flex-direction:column;gap:32px;padding-top:12px;}
 .body-text{font-family:var(--font-b);font-weight:300;font-size:15px;color:var(--mid);line-height:1.82;}
 .body-text strong{font-weight:500;color:var(--black);}
-
-/* CASE BLOCKS */
 .case-blocks{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1px;background:var(--border);margin:0 0 2px;}
 .case-block{background:var(--white);padding:48px;}
 .case-block-label{font-family:var(--font-m);font-size:8px;letter-spacing:.18em;text-transform:uppercase;color:var(--green);margin-bottom:12px;}
 .case-block-title{font-family:var(--font-d);font-weight:700;font-size:clamp(20px,2.5vw,30px);letter-spacing:-.01em;text-transform:uppercase;margin-bottom:16px;}
 .case-block-text{font-family:var(--font-b);font-weight:300;font-size:14px;color:var(--mid);line-height:1.75;}
-
-/* FULL WIDTH IMAGE */
 .img-full{width:100%;display:block;margin:2px 0;}
 .img-full img{width:100%;height:auto;display:block;}
 .img-full-cover{width:100%;height:70vh;overflow:hidden;margin:2px 0;}
 .img-full-cover img{width:100%;height:100%;object-fit:cover;display:block;}
-
-/* TWO COL IMAGES */
 .img-two{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin:2px 0;}
 .img-two img{width:100%;height:100%;object-fit:cover;display:block;aspect-ratio:4/3;}
 .img-three{display:grid;grid-template-columns:1fr 1fr 1fr;gap:2px;margin:2px 0;}
 .img-three img{width:100%;aspect-ratio:1/1;object-fit:cover;display:block;}
-
-/* QUOTE */
 .quote-block{background:var(--black);padding:80px 48px;}
 .quote-text{font-family:var(--font-d);font-weight:700;font-size:clamp(28px,4vw,56px);line-height:.95;letter-spacing:-.02em;text-transform:uppercase;color:#fff;max-width:800px;}
 .quote-text .g{color:var(--green);}
 .quote-author{font-family:var(--font-m);font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.35);margin-top:32px;}
 .quote-author strong{color:rgba(255,255,255,.7);font-weight:400;}
-
-/* CAPTION */
 .caption{padding:20px 48px;font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:var(--gray);border-bottom:.5px solid var(--border);}
-
-/* TAGS */
 .tags-row{display:flex;flex-wrap:wrap;gap:8px;padding:48px 48px 0;}
 .tag{font-family:var(--font-m);font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:var(--gray);border:.5px solid var(--border);padding:6px 14px;}
-
-/* NEXT PROJECT */
 .next-project{display:flex;align-items:center;justify-content:space-between;padding:64px 48px;border-top:.5px solid var(--border);margin-top:80px;cursor:pointer;text-decoration:none;transition:background .2s;}
 .next-project:hover{background:rgba(10,10,10,.03);}
 .next-label{font-family:var(--font-m);font-size:9px;letter-spacing:.18em;text-transform:uppercase;color:var(--gray);}
 .next-name{font-family:var(--font-d);font-weight:900;font-size:clamp(36px,6vw,80px);letter-spacing:-.025em;text-transform:uppercase;color:var(--black);margin-top:8px;}
 .next-arrow{font-family:var(--font-d);font-weight:900;font-size:64px;color:var(--green);}
-
-/* FOOTER */
 footer{background:var(--black);padding:28px 48px;display:flex;align-items:center;justify-content:space-between;border-top:.5px solid rgba(255,255,255,.05);}
 .fcopy{font-family:var(--font-m);font-size:9px;color:rgba(255,255,255,.18);letter-spacing:.1em;}
 .flinks{display:flex;gap:24px;}
 .flinks a{font-family:var(--font-m);font-size:9px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.28);text-decoration:none;transition:color .2s;}
 .flinks a:hover{color:var(--green);}
-
-/* REVEAL */
 .r{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1);}
 .r.on{opacity:1;transform:none;}
 .d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.32s}
-
-/* RESPONSIVE */
 @media(max-width:900px){
   nav{padding:16px 20px;}
   .hero-overlay{padding:40px 20px;}
@@ -194,10 +165,10 @@ footer{background:var(--black);padding:28px 48px;display:flex;align-items:center
 </div>
 <div class="caption">World Tour — Event poster mockup</div>
 
-<!-- TWO IMAGES: NYC + Paris -->
+<!-- TWO IMAGES -->
 <div class="img-two r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/184791197609913.6633537ae303a.jpg" alt="Celonis World Tour NYC" loading="lazy">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/562fd6197609913.6633537ae4bbb.jpg" alt="Celonis World Tour Paris" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4aa7c1197609913.6633537ae28a5.png" alt="Celonis World Tour NYC" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/24888e197609913.6633537ae3a04.jpg" alt="Celonis World Tour Paris" loading="lazy">
 </div>
 <div class="caption">World Tour — New York & Paris campaign assets</div>
 
@@ -207,39 +178,18 @@ footer{background:var(--black);padding:28px 48px;display:flex;align-items:center
   <div class="quote-author"><strong>Christian Flaccus</strong> — Chief Brand Officer, Celonis</div>
 </div>
 
-<!-- IMAGE: LinkedIn/Social post -->
-<div class="img-full r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/adc738197609913.6633537ae41da.jpg" alt="Celonis Social Media" loading="lazy">
+<!-- IMAGE: Social -->
+<div class="img-full-cover r">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/184791197609913.6633537ae303a.jpg" alt="Celonis Social Media" loading="lazy">
 </div>
 <div class="caption">Social media series — LinkedIn post design</div>
 
-<!-- TWO IMAGES: Brand Values + Screenshot -->
+<!-- TWO IMAGES: Brand Values -->
 <div class="img-two r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/24888e197609913.6633537ae3a04.jpg" alt="Celonis Brand Values" loading="lazy">
+  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/562fd6197609913.6633537ae4bbb.jpg" alt="Celonis Brand Values" loading="lazy">
   <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/adc738197609913.6633537ae41da.jpg" alt="Celonis Design System" loading="lazy">
 </div>
 <div class="caption">Brand values communication & design system overview</div>
-
-<!-- BEHANCE IMAGES: Additional project work -->
-<div class="img-three r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/b51584197609913.6633537ae3e0a.png" alt="Celonis Brand Work" loading="lazy">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/4aa7c1197609913.6633537ae28a5.png" alt="Celonis Brand Work" loading="lazy">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/24888e197609913.6633537ae3a04.jpg" alt="Celonis Brand Work" loading="lazy">
-</div>
-<div class="caption">Brand system — Visual assets across campaign touchpoints</div>
-
-<!-- FULL IMAGE: Portfolio GIF -->
-<div class="img-full-cover r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/184791197609913.6633537ae303a.jpg" alt="Celonis Full Brand" loading="lazy">
-</div>
-<div class="caption">Celonis brand system — Full deliverables overview</div>
-
-<!-- TWO MORE BEHANCE -->
-<div class="img-two r">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/562fd6197609913.6633537ae4bbb.jpg" alt="Celonis In-house Design" loading="lazy">
-  <img src="https://mir-s3-cdn-cf.behance.net/project_modules/max_1200/adc738197609913.6633537ae41da.jpg" alt="Celonis In-house Design" loading="lazy">
-</div>
-<div class="caption">In-house design work — Social media & banner series</div>
 
 <!-- SECOND QUOTE -->
 <div class="quote-block r" style="background:var(--black);border-top:1px solid rgba(255,255,255,.05)">
@@ -294,8 +244,13 @@ footer{background:var(--black);padding:28px 48px;display:flex;align-items:center
   <div class="flinks">
     <a href="https://www.behance.net/joaquimgild446" target="_blank">Behance</a>
     <a href="https://www.linkedin.com/in/joaquimgilmane/" target="_blank">LinkedIn</a>
-    <a href="/cdn-cgi/l/email-protection#d3b9bcb2a2a6babeabb4babf93b4beb2babffdb0bcbe"><span class="__cf_email__" data-cfemail="543e3b3525213d392c333d38143339353d387a373b39">[email&#160;protected]</span></a>
+    <a href="about.html#contact">Contact</a>
   </div>
 </footer>
 
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-deco
+<script>
+const obs = new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting)e.target.classList.add('on');});},{threshold:0.08});
+document.querySelectorAll('.r').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
